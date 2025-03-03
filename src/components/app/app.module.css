@@ -1,0 +1,15 @@
+.wrapper {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  background-color: var(--theme-primary-color);
+  flex: 0 0 15%;
+}
+
+.content {
+  background-color: var(--theme-secondary-color);
+  flex: 1 1;
+}
+
