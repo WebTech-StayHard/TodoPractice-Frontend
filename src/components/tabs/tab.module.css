@@ -1,0 +1,43 @@
+.tabContainer {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+
+  font-size: 1.25rem;
+  font-weight: 500;
+
+  transition: all 0.15s linear;
+}
+
+.tabContainer:hover {
+  background-color: var(--theme-secondary-color);
+}
+
+.tabContainer:active {
+  opacity: 0.8;
+}
+
+.tab {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Active */
+.tabContainer.active {
+  color: var(--orange-color);
+  background-color: var(--theme-secondary-color);
+}
+
+.tabContainer.active:hover {
+  background-color: var(--theme-secondary-color);
+}
+
+.tabContainer.active:active {
+  opacity: 1;
+}

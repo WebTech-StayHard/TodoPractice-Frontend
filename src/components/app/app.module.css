@@ -4,8 +4,9 @@
 }
 
 .sidebar {
+  min-width: 15rem;
   background-color: var(--theme-primary-color);
-  flex: 0 0 15%;
+  flex: 0 0 20%;
 }
 
 .content {

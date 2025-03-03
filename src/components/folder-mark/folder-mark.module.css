@@ -1,6 +1,6 @@
 .mark {
-  width: 0.75rem;
-  height: 0.75rem;
+  min-width: 0.75rem;
+  min-height: 0.75rem;
   background-color:aliceblue;
   border-radius: 50%;
 }

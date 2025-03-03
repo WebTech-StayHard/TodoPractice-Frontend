@@ -1,23 +1,28 @@
 import { FC } from 'react';
-import Tab from '../tab/tab';
+import Tab from '../tabs/tab';
 import FolderList from '../folder-list/folder-list';
 
 import s from './sidebar.module.css';
 import listIcon from '../../assets/images/list.svg';
 import plusIcon from '../../assets/images/plus.svg';
+import TabContainer from '../tabs/tab-container';
 
 const Sidebar: FC = () => {
   return (
     <aside className={s.sidebar}>
-      <Tab text='Все задачи' onClick={console.log} >
-        <img className='tab-icon' src={listIcon} alt="list" />
-      </Tab>
+      <TabContainer onClick={console.log} >
+        <Tab text='Все задачи'>
+          <img className='tab-icon' src={listIcon} alt="list" />
+        </Tab>
+      </TabContainer>
 
       <FolderList />
 
-      <Tab text='Добавить папку' onClick={console.log} >
-        <img className='tab-icon' src={plusIcon} alt="plus" />
-      </Tab>
+      <TabContainer onClick={console.log}>
+        <Tab text='Добавить папку'>
+          <img className='tab-icon' src={plusIcon} alt="plus" />
+        </Tab>
+      </TabContainer>
     </aside>
   );
 }
