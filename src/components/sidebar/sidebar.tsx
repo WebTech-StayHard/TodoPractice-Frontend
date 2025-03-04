@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react';
+import { FC } from 'react';
 import Tab from '../common/tabs/tab';
 import FolderList from '../folder-list/folder-list';
 

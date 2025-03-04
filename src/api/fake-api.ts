@@ -1,4 +1,4 @@
-import { folders } from '../utils/constants';
+import { deleteFolder, folders } from '../utils/constants';
 import { TFolder } from '../utils/types';
 
 class FakeAPI {
@@ -8,6 +8,12 @@ class FakeAPI {
     });
     
     return result;
+  }
+
+  removeFolder = async (id: string): Promise<TFolder[]> => {
+    return await new Promise<TFolder[]>((resolve) => {
+      setTimeout(() => resolve(deleteFolder(id)), 1000)
+    });
   }
 }
 

@@ -1,5 +1,5 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import { sidebarReducer } from './slices/sidebar';
+import { foldersReducer } from './slices/folders';
 import {
   useDispatch as dispatchHook,
   useSelector as selectorHook,
@@ -7,7 +7,7 @@ import {
 } from 'react-redux';
 
 const rootReducer = combineReducers({
-  sidebar: sidebarReducer,
+  folders: foldersReducer,
 });
 
 export const store = configureStore({

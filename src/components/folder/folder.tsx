@@ -3,15 +3,17 @@ import { TFolder } from '../../utils/types';
 import TabContainer from '../common/tabs/tab-container';
 import Tab from '../common/tabs/tab';
 import FolderMark from '../folder-mark/folder-mark';
-import RemoveButton from '../common/buttons/remove-button';
+
+import crossIcon from '../../assets/images/cross.svg';
 
 import s from './folder.module.css';
+import Button from '../common/buttons/button';
 
 type FolderProps = {
   folder: TFolder,
   isActive: boolean,
   setCurrentFolder: (id: string) => void,
-  handleRemove: () => void
+  handleRemove: (id: string) => void
 }
 
 const Folder: FC<FolderProps> = ({folder, isActive, setCurrentFolder, handleRemove}) => {
@@ -22,15 +24,18 @@ const Folder: FC<FolderProps> = ({folder, isActive, setCurrentFolder, handleRemo
     setCurrentFolder(id);
   }
 
+  const removeFolder = () => {
+    handleRemove(id);
+  }
+
   return (
     <TabContainer onClick={handleClick} isActive={isActive}>
       <Tab text={title}>
         <FolderMark color={color} />
       </Tab>
-      <RemoveButton 
-        className={s.removeButton} 
-        handleRemove={handleRemove}
-      />
+      <Button className={s.removeButton} onClick={removeFolder}>
+        <img src={crossIcon} alt='cross'/>
+      </Button>
     </TabContainer>
   )
 }

@@ -2,20 +2,20 @@ import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { TFolder } from '../../utils/types'
 import { fakeAPI } from '../../api/fake-api'
 
-type TSidebarState = {
+type TFoldersState = {
   folders: TFolder[],
   currentFolder: string | null,
   isLoading: boolean
 }
 
-const initialState: TSidebarState = {
+const initialState: TFoldersState = {
   folders: [],
   currentFolder: null,
   isLoading: false
 }
 
-const sidebarSlice = createSlice({
-  name: 'sidebar',
+const foldersSlice = createSlice({
+  name: 'folders',
   initialState,
   reducers: {
     setCurrentFolder: (state, action: PayloadAction<string>) => {
@@ -35,21 +35,34 @@ const sidebarSlice = createSlice({
       .addCase(getFolders.rejected, (state) => {
         state.isLoading = false;
       })
-      .addCase(getFolders.fulfilled, (state, action) => {
+      .addCase(getFolders.fulfilled, (state, {payload}) => {
         state.isLoading = false;
-        state.folders = action.payload;
+        state.folders = payload;
+      })
+      .addCase(removeFolder.fulfilled, (state, {payload}) => {
+        state.folders = payload;
       })
   }
 })
 
-export const getFolders = createAsyncThunk('sidebar/getFolders', async () => {
-  return fakeAPI.getFolders();
-})
+export const getFolders = createAsyncThunk(
+  'folders/getFolders', 
+  async () => {
+    return fakeAPI.getFolders();
+  }
+);
 
-export const sidebarReducer = sidebarSlice.reducer;
-export const { setCurrentFolder } = sidebarSlice.actions;
+export const removeFolder = createAsyncThunk(
+  'folders/removeFolder', 
+  async (id: string) => {
+    return fakeAPI.removeFolder(id);
+  }
+);
+
+export const foldersReducer = foldersSlice.reducer;
+export const { setCurrentFolder } = foldersSlice.actions;
 export const { 
   getFoldersSelector, 
   getIsLoadingSelector,
   getCurrentFolderSelector
-} = sidebarSlice.selectors;
+} = foldersSlice.selectors;

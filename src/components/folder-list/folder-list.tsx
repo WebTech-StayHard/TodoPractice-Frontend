@@ -8,8 +8,9 @@ import {
   getFolders, 
   getFoldersSelector, 
   getIsLoadingSelector, 
+  removeFolder, 
   setCurrentFolder 
-} from '../../store/slices/sidebar';
+} from '../../store/slices/folders';
 
 
 const FolderList: FC = () => {
@@ -26,7 +27,9 @@ const FolderList: FC = () => {
     dispatch(setCurrentFolder(id));
   }
 
-  const handleRemove = () => {}
+  const handleRemove = (id: string) => {
+    dispatch(removeFolder(id));
+  }
 
   const folderElements = folders.map(f => 
     <Folder 

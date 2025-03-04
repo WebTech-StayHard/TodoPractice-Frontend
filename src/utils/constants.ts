@@ -1,6 +1,6 @@
 import { TFolder } from './types';
 
-export const folders: TFolder[] = [
+export let folders: TFolder[] = [
   {
     id: '1',
     title: 'Folder 1',
@@ -17,3 +17,8 @@ export const folders: TFolder[] = [
     color: '#FF5B42'
   }
 ]
+
+export const deleteFolder = (id: string) => {
+  folders = folders.filter(f => f.id !== id);
+  return folders;
+}
