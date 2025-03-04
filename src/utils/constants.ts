@@ -20,5 +20,4 @@ export let folders: TFolder[] = [
 
 export const deleteFolder = (id: string) => {
   folders = folders.filter(f => f.id !== id);
-  return folders;
 }

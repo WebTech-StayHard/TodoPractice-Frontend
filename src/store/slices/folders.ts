@@ -39,9 +39,6 @@ const foldersSlice = createSlice({
         state.isLoading = false;
         state.folders = payload;
       })
-      .addCase(removeFolder.fulfilled, (state, {payload}) => {
-        state.folders = payload;
-      })
   }
 })
 
@@ -54,8 +51,10 @@ export const getFolders = createAsyncThunk(
 
 export const removeFolder = createAsyncThunk(
   'folders/removeFolder', 
-  async (id: string) => {
-    return fakeAPI.removeFolder(id);
+  async (id: string, {dispatch}) => {
+    return await fakeAPI.removeFolder(id).then(() => {
+      dispatch(getFolders());
+    })
   }
 );
 
