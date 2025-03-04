@@ -1,8 +1,6 @@
 import { FC } from 'react';
-import crossIcon from '../../assets/images/cross.svg';
+import crossIcon from '../../../assets/images/cross.svg';
 import Button from './button';
-
-import s from './button.module.css';
 
 type RemoveButtonProps = {
   handleRemove?: () => void,

@@ -1,29 +1,16 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import s from './folder-list.module.css';
-import Tab from '../tabs/tab';
+import Tab from '../common/tabs/tab';
 import FolderMark from '../folder-mark/folder-mark';
-import TabContainer from '../tabs/tab-container';
-import RemoveButton from '../buttons/remove-button';
+import TabContainer from '../common/tabs/tab-container';
+import RemoveButton from '../common/buttons/remove-button';
+import { TFolder } from '../../utils/types';
 
-const FolderList: FC = () => {
-  const folders = [
-    {
-      title: 'Folder 1',
-      color: '#FFFFFF',
-      status: true
-    },
-    {
-      title: 'Folder 2',
-      color: '#FFA454',
-      status: false
-    },
-    {
-      title: 'Folder 3',
-      color: '#FF5B42',
-      status: false
-    }
-  ]
+type FolderListProps = {
+  folders: TFolder[]
+}
 
+const FolderList: FC<FolderListProps> = ({folders}) => {
   const handleRemove = () => {
 
   }
@@ -32,7 +19,7 @@ const FolderList: FC = () => {
     <section className={s.folderList}>
       {
         folders.map(f => 
-          <TabContainer onClick={console.log} isActive={f.status}>
+          <TabContainer onClick={console.log} isActive={false}>
             <Tab text={f.title}>
               <FolderMark color={f.color} />
             </Tab>
