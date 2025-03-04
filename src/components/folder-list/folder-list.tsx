@@ -1,32 +1,48 @@
 import { FC, useEffect } from 'react';
+import Folder from '../folder/folder';
+import Loader from '../common/loader/loader';
 import s from './folder-list.module.css';
-import Tab from '../common/tabs/tab';
-import FolderMark from '../folder-mark/folder-mark';
-import TabContainer from '../common/tabs/tab-container';
-import RemoveButton from '../common/buttons/remove-button';
-import { TFolder } from '../../utils/types';
+import { useDispatch, useSelector } from '../../store/store';
+import { 
+  getCurrentFolderSelector, 
+  getFolders, 
+  getFoldersSelector, 
+  getIsLoadingSelector, 
+  setCurrentFolder 
+} from '../../store/slices/sidebar';
 
-type FolderListProps = {
-  folders: TFolder[]
-}
 
-const FolderList: FC<FolderListProps> = ({folders}) => {
-  const handleRemove = () => {
+const FolderList: FC = () => {
+  const dispatch = useDispatch();
+  const folders = useSelector(getFoldersSelector);
+  const currentFolder = useSelector(getCurrentFolderSelector);
+  const isLoading = useSelector(getIsLoadingSelector);
 
+  useEffect(() => {
+    dispatch(getFolders());
+  }, []);
+
+  const setFolder = (id: string) => {
+    dispatch(setCurrentFolder(id));
   }
 
+  const handleRemove = () => {}
+
+  const folderElements = folders.map(f => 
+    <Folder 
+      key={f.id}
+      folder={f}
+      isActive={f.id === currentFolder}
+      setCurrentFolder={setFolder}
+      handleRemove={handleRemove}
+    />
+  )
+
   return (
+    isLoading ? 
+    <Loader /> :
     <section className={s.folderList}>
-      {
-        folders.map(f => 
-          <TabContainer onClick={console.log} isActive={false}>
-            <Tab text={f.title}>
-              <FolderMark color={f.color} />
-            </Tab>
-            <RemoveButton className={s.removeButton} handleRemove={handleRemove} />
-          </TabContainer>
-        )
-      }
+      { folderElements }
     </section>
   );
 }

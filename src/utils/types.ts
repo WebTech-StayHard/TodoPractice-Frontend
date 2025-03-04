@@ -9,5 +9,4 @@ export type TFolder = {
   id: string,
   title: string,
   color: string,
-  tasks: TTask[]
 }

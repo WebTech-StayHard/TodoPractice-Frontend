@@ -1,0 +1,14 @@
+.removeButton {
+  padding: 0.3rem;
+  background-color: var(--orange-color);
+  border-radius: 50%;
+}
+
+.removeButton:hover {
+  transform: scale(1.1);
+  background-color: var(--lighten-orange-color);
+}
+
+.removeButton:active {
+  opacity: 0.8;
+}

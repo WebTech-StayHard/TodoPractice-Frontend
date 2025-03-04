@@ -25,6 +25,7 @@ const sidebarSlice = createSlice({
   selectors: {
     getFoldersSelector: (state) => state.folders,
     getIsLoadingSelector: (state) => state.isLoading,
+    getCurrentFolderSelector: (state) => state.currentFolder
   },
   extraReducers: (builder) => {
     builder
@@ -46,4 +47,9 @@ export const getFolders = createAsyncThunk('sidebar/getFolders', async () => {
 })
 
 export const sidebarReducer = sidebarSlice.reducer;
-export const { getFoldersSelector, getIsLoadingSelector } = sidebarSlice.selectors;
+export const { setCurrentFolder } = sidebarSlice.actions;
+export const { 
+  getFoldersSelector, 
+  getIsLoadingSelector,
+  getCurrentFolderSelector
+} = sidebarSlice.selectors;
