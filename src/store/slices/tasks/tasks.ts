@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { TTask } from '../../utils/types'
-import { fakeAPI } from '../../api/fake-api'
+import { TTask } from '../../../utils/types'
+import { fakeAPI } from '../../../api/fake-api'
 
 type TFoldersState = {
   tasks: TTask[],

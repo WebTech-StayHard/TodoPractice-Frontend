@@ -4,7 +4,7 @@ import s from './tab.module.css';
 type TabContainerProps = {
   isActive?: boolean,
   children?: ReactNode,
-  onClick: () => void,
+  onClick?: () => void,
 }
 
 const TabContainer: FC<TabContainerProps> = ({children, onClick, isActive}) => {

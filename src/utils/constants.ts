@@ -4,7 +4,7 @@ export let folders: TFolder[] = [
   {
     id: '1',
     title: 'Folder 1',
-    color: '#FFFFFF'
+    color: '#FF5B42'
   },
   {
     id: '2',
@@ -14,7 +14,7 @@ export let folders: TFolder[] = [
   {
     id: '3',
     title: 'Folder 3',
-    color: '#FF5B42'
+    color: '#FFFFFF'
   }
 ];
 

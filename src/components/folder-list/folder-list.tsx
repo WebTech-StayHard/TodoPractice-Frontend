@@ -5,28 +5,23 @@ import Loader from "../common/loader/loader";
 import s from "./folder-list.module.css";
 import { useDispatch, useSelector } from "../../store/store";
 import {
-  getCurrentFolderSelector,
+  getCurrentFolderIdSelector,
   getFolders,
   getFoldersSelector,
   getIsLoadingSelector,
   removeFolder,
-  setCurrentFolder,
-} from "../../store/slices/folders";
+} from "../../store/slices/folders/folders";
 import { NavLink } from "react-router-dom";
 
 const FolderList: FC = () => {
   const dispatch = useDispatch();
   const folders = useSelector(getFoldersSelector);
-  const currentFolder = useSelector(getCurrentFolderSelector);
+  const currentFolderId = useSelector(getCurrentFolderIdSelector);
   const isLoading = useSelector(getIsLoadingSelector);
 
   useEffect(() => {
     dispatch(getFolders());
   }, []);
-
-  const setFolder = (id: string) => {
-    dispatch(setCurrentFolder(id));
-  };
 
   const handleRemove = (id: string) => {
     dispatch(removeFolder(id));
@@ -40,8 +35,7 @@ const FolderList: FC = () => {
     >
       <Folder
         folder={f}
-        isActive={f.id === currentFolder}
-        setCurrentFolder={setFolder}
+        isActive={f.id === currentFolderId}
         handleRemove={handleRemove}
       />
     </NavLink>

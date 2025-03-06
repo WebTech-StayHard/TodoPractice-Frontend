@@ -12,24 +12,18 @@ import Button from '../../common/buttons/button';
 type FolderProps = {
   folder: TFolder,
   isActive: boolean,
-  setCurrentFolder: (id: string) => void,
   handleRemove: (id: string) => void
 }
 
-const Folder: FC<FolderProps> = ({folder, isActive, setCurrentFolder, handleRemove}) => {
+const Folder: FC<FolderProps> = ({folder, isActive, handleRemove}) => {
   const {id, title, color} = folder;
-
-  const handleClick = () => {
-    if (isActive) return;
-    setCurrentFolder(id);
-  }
 
   const removeFolder = () => {
     handleRemove(id);
   }
 
   return (
-    <TabContainer onClick={handleClick} isActive={isActive}>
+    <TabContainer isActive={isActive}>
       <Tab text={title}>
         <FolderMark color={color} />
       </Tab>

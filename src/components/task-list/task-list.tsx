@@ -1,14 +1,17 @@
 import { FC } from "react";
 import s from "./task-list.module.css";
 import { useSelector } from "../../store/store";
-import { getTasksSelector } from "../../store/slices/tasks";
+import { getTasksSelector } from "../../store/slices/tasks/tasks";
 import Task from "./task/task";
 import Button from '../common/buttons/button';
 import clsx from 'clsx';
 import Separator from '../common/separator/separator';
+import { getCurrentFolderSelector } from '../../store/slices/folders/selectors';
+import Title from '../common/title/title';
 
 const TaskList: FC = () => {
   const tasks = useSelector(getTasksSelector);
+  const folder = useSelector(getCurrentFolderSelector);
 
   const taskElements = tasks.map((t, index) => (
     <Task
@@ -20,15 +23,15 @@ const TaskList: FC = () => {
   return (
     !tasks.length ?
     <section className={s.noTasks}>
-      <h2 className={s.noTasks__title}>
+      <Title className={s.noTasks__title}>
         Задачи отсутствуют
-      </h2>
+      </Title>
     </section>
     :
     <section className={s.taskListContainer}>
-      <h2 className={s.taskListContainer__title}>
-        Folder 1
-      </h2>
+      <Title className={s.taskListContainer__title} color={folder?.color}>
+      { folder?.title }
+      </Title>
 
       <Separator className={s.separator} />
 
@@ -36,8 +39,9 @@ const TaskList: FC = () => {
         { taskElements }
       </div>
 
-      <form className={s.form}>
+      <form className={s.form} name='add-task'>
         <input
+          id='text-task'
           className={s.taskInput}
           placeholder='Текст задачи' 
         />

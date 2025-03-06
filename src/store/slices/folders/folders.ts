@@ -1,16 +1,16 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { TFolder } from '../../utils/types'
-import { fakeAPI } from '../../api/fake-api'
+import { TFolder } from '../../../utils/types'
+import { fakeAPI } from '../../../api/fake-api'
 
 type TFoldersState = {
   folders: TFolder[],
-  currentFolder: string | null,
+  currentFolderId: string | null,
   isLoading: boolean
 }
 
 const initialState: TFoldersState = {
   folders: [],
-  currentFolder: null,
+  currentFolderId: null,
   isLoading: false
 }
 
@@ -18,14 +18,14 @@ const foldersSlice = createSlice({
   name: 'folders',
   initialState,
   reducers: {
-    setCurrentFolder: (state, action: PayloadAction<string>) => {
-      state.currentFolder = action.payload;
+    setCurrentFolder: (state, { payload }: PayloadAction<string>) => {
+      state.currentFolderId = payload;
     }
   },
   selectors: {
     getFoldersSelector: (state) => state.folders,
     getIsLoadingSelector: (state) => state.isLoading,
-    getCurrentFolderSelector: (state) => state.currentFolder
+    getCurrentFolderIdSelector: (state) => state.currentFolderId
   },
   extraReducers: (builder) => {
     builder
@@ -63,5 +63,5 @@ export const { setCurrentFolder } = foldersSlice.actions;
 export const { 
   getFoldersSelector, 
   getIsLoadingSelector,
-  getCurrentFolderSelector
+  getCurrentFolderIdSelector
 } = foldersSlice.selectors;
