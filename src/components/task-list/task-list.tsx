@@ -3,6 +3,9 @@ import s from "./task-list.module.css";
 import { useSelector } from "../../store/store";
 import { getTasksSelector } from "../../store/slices/tasks";
 import Task from "./task/task";
+import Button from '../common/buttons/button';
+import clsx from 'clsx';
+import Separator from '../common/separator/separator';
 
 const TaskList: FC = () => {
   const tasks = useSelector(getTasksSelector);
@@ -16,13 +19,38 @@ const TaskList: FC = () => {
 
   return (
     !tasks.length ?
-    <h2 className={s.taskList__title}>
-      Задачи отсутствуют
-    </h2>
+    <section className={s.noTasks}>
+      <h2 className={s.noTasks__title}>
+        Задачи отсутствуют
+      </h2>
+    </section>
     :
-    <div>
-      { taskElements }
-    </div>
+    <section className={s.taskListContainer}>
+      <h2 className={s.taskListContainer__title}>
+        Folder 1
+      </h2>
+
+      <Separator className={s.separator} />
+
+      <div className={s.taskList}>
+        { taskElements }
+      </div>
+
+      <form className={s.form}>
+        <input
+          className={s.taskInput}
+          placeholder='Текст задачи' 
+        />
+        <div className={s.taskBtnContainer}>
+          <Button className={clsx(s.taskBtn, s.taskSubmitBtn)}>
+            Добавить задачу
+          </Button>
+          <Button className={clsx(s.taskBtn, s.taskCancelBtn)}>
+            Отмена
+          </Button>
+        </div>
+      </form>
+    </section>
   );
 };
 

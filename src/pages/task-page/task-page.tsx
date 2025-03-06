@@ -21,7 +21,10 @@ const TaskPage: FC = () => {
     <section className={s.taskPage}>
       {
         isLoading ? 
-        <Loader /> :
+        <div className={s.taskPage__loader}>
+          <Loader /> 
+        </div>
+        :
         <Outlet />
       }
     </section>

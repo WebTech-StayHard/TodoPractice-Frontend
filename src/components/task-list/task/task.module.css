@@ -1,0 +1,7 @@
+.task {
+  display: flex;
+  gap: 0.5rem;
+  
+  font-size: 1.35rem;
+  font-weight: 500;
+}
