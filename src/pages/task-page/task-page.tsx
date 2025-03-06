@@ -1,16 +1,15 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { FC, useEffect } from "react";
-import s from "./task-page.module.css";
 import { useDispatch, useSelector } from "../../store/store";
 import { getIsLoadingSelector, getTasks } from "../../store/slices/tasks/tasks";
-import Loader from '../../components/common/loader/loader';
-import { Outlet, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { setCurrentFolder } from '../../store/slices/folders/folders';
+import { TaskPageUI } from '../../components/ui/pages';
 
-const TaskPage: FC = () => {
+export const TaskPage: FC = () => {
   const dispatch = useDispatch();
-  const isLoading = useSelector(getIsLoadingSelector);
   const { folderId } = useParams<'folderId'>();
+  const isLoading = useSelector(getIsLoadingSelector);
 
   useEffect(() => {
     if (folderId) {
@@ -24,17 +23,10 @@ const TaskPage: FC = () => {
   }, [folderId]);
 
   return (
-    <section className={s.taskPage}>
-      {
-        isLoading ? 
-        <div className={s.taskPage__loader}>
-          <Loader /> 
-        </div>
-        :
-        <Outlet />
-      }
-    </section>
-  );
+    <TaskPageUI
+      isLoading={isLoading}
+    />
+  )
 };
 
 export default TaskPage;

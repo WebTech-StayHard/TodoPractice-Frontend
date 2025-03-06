@@ -1,16 +1,7 @@
-import { FC } from 'react';
-import s from './separator.module.css';
-import clsx from 'clsx';
+import { FC } from "react";
+import { SeparatorProps } from "./type";
+import { SeparatorUI } from '../../ui/common/separator';
 
-type SeparatorProps = {
-  className?: string
-}
-
-const Separator: FC<SeparatorProps> = ({className = ''}) => {
-  return (
-    <div className={clsx(s.separator, className)}>
-    </div>
-  )
-}
-
-export default Separator;
+export const Separator: FC<SeparatorProps> = ({ className = "" }) => {
+  return <SeparatorUI className={className} />;
+};

@@ -1,8 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { FC, useEffect } from "react";
-import Folder from "./folder/folder";
-import Loader from "../common/loader/loader";
-import s from "./folder-list.module.css";
 import { useDispatch, useSelector } from "../../store/store";
 import {
   getCurrentFolderIdSelector,
@@ -12,8 +9,10 @@ import {
   removeFolder,
 } from "../../store/slices/folders/folders";
 import { NavLink } from "react-router-dom";
+import { Folder } from '../folder/folder';
+import { FolderListUI } from '../ui/folder-list';
 
-const FolderList: FC = () => {
+export const FolderList: FC = () => {
   const dispatch = useDispatch();
   const folders = useSelector(getFoldersSelector);
   const currentFolderId = useSelector(getCurrentFolderIdSelector);
@@ -41,11 +40,10 @@ const FolderList: FC = () => {
     </NavLink>
   ));
 
-  return isLoading ? (
-    <Loader />
-  ) : (
-    <section className={s.folderList}>{folderElements}</section>
+  return (
+    <FolderListUI
+      isLoading={isLoading}
+      folderElements={folderElements}
+    />
   );
 };
-
-export default FolderList;

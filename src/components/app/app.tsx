@@ -2,9 +2,9 @@ import { Routes, Route } from "react-router-dom";
 import { FC } from "react";
 
 import s from "./app.module.css";
-import Sidebar from "../sidebar/sidebar";
-import TaskPage from '../../pages/task-page/task-page';
-import TaskList from '../task-list/task-list';
+import { Sidebar } from '../sidebar/sidebar';
+import { TaskList } from '../task-list/task-list';
+import { TaskPage } from '../../pages/task-page';
 
 const App: FC = () => {
   return (

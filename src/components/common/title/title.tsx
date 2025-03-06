@@ -1,17 +1,7 @@
-import { FC, ReactNode } from "react";
+import { FC } from "react";
+import { TitleProps } from "./type";
+import { TitleUI } from '../../ui/common/title';
 
-type TitleProps = {
-  className?: string;
-  color?: string;
-  children: ReactNode;
-};
-
-const Title: FC<TitleProps> = ({ className, color, children }) => {
-  return (
-    <h2 className={className} style={{ color }}>
-      {children}
-    </h2>
-  );
-};
-
-export default Title;
+export const Title: FC<TitleProps> = ({ className, color, children }) => (
+  <TitleUI className={className} color={color} children={children} />
+);

@@ -1,18 +1,7 @@
-import s from './folder-mark.module.css';
+import { FC } from 'react';
+import { FolderMarkUI } from '../ui/folder-mark';
+import { FolderMarkProps } from './type';
 
-type FolderMarkProps = {
-  color?: string
-}
-
-const FolderMark = ({color}: FolderMarkProps) => {
-  const styles = {
-    backgroundColor: color
-  }
-
-  return (
-    <span className={s.mark} style={styles}>
-    </span>
-  );
-}
-
-export default FolderMark;
+export const FolderMark: FC<FolderMarkProps> = ({ backgroundColor }) => (
+  <FolderMarkUI backgroundColor={backgroundColor} />
+);

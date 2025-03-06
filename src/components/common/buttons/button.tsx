@@ -1,19 +1,14 @@
-import { FC, ReactNode } from 'react';
+import { FC } from 'react';
 
-import s from './button.module.css';
+import { ButtonUI } from '../../ui/common/buttons';
+import { ButtonProps } from './type';
 
-type ButtonProps = {
-  children?: ReactNode,
-  className?: string,
-  onClick?: () => void;
-}
-
-const Button: FC<ButtonProps> = ({children, onClick, className = ''}) => {
+export const Button: FC<ButtonProps> = ({children, className = '', onClick}) => {
   return (
-    <button onClick={onClick} className={`${s.button} ${className}`}>
-      {children}
-    </button>
-  );
+    <ButtonUI
+      children={children}
+      className={className}
+      onClick={onClick}
+    />
+  )
 };
-
-export default Button;
