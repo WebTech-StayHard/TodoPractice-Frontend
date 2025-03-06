@@ -35,7 +35,7 @@ const foldersSlice = createSlice({
       .addCase(getFolders.rejected, (state) => {
         state.isLoading = false;
       })
-      .addCase(getFolders.fulfilled, (state, {payload}) => {
+      .addCase(getFolders.fulfilled, (state, {payload}: PayloadAction<TFolder[]>) => {
         state.isLoading = false;
         state.folders = payload;
       })

@@ -21,3 +21,12 @@ code {
 .tab-icon {
   width: 1.25rem;
 }
+
+.link {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.link.active {
+  color: var(--orange-color);
+}

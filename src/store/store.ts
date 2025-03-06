@@ -5,9 +5,11 @@ import {
   useSelector as selectorHook,
   TypedUseSelectorHook
 } from 'react-redux';
+import { tasksReducer } from './slices/tasks';
 
 const rootReducer = combineReducers({
   folders: foldersReducer,
+  tasks: tasksReducer
 });
 
 export const store = configureStore({

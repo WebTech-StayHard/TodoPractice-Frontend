@@ -5,9 +5,3 @@
   justify-content: center;
   height: 100%;
 }
-
-.taskPage__title {
-  font-size: 3rem;
-  font-weight: 700;
-  color: var(--gray-color);
-}
