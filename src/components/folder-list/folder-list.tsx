@@ -8,12 +8,13 @@ import {
   getIsLoadingSelector,
   removeFolder,
 } from "../../store/slices/folders/folders";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { Folder } from '../folder/folder';
 import { FolderListUI } from '../ui/folder-list';
 
 export const FolderList: FC = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const folders = useSelector(getFoldersSelector);
   const currentFolderId = useSelector(getCurrentFolderIdSelector);
   const isLoading = useSelector(getIsLoadingSelector);
@@ -23,7 +24,7 @@ export const FolderList: FC = () => {
   }, []);
 
   const handleRemove = (id: string) => {
-    dispatch(removeFolder(id));
+    dispatch(removeFolder({id, navigate}));
   };
 
   const folderElements = folders.map((f) => (

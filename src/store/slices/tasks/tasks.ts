@@ -15,7 +15,11 @@ const initialState: TFoldersState = {
 const tasksSlice = createSlice({
   name: 'tasks',
   initialState,
-  reducers: {},
+  reducers: {
+    clearTasks: (state) => {
+      state.tasks = [];
+    }
+  },
   selectors: {
     getTasksSelector: (state) => state.tasks,
     getIsLoadingSelector: (state) => state.isLoading,
@@ -42,8 +46,8 @@ export const getTasks = createAsyncThunk(
   }
 );
 
-
 export const tasksReducer = tasksSlice.reducer;
+export const { clearTasks } = tasksSlice.actions; 
 export const { 
   getTasksSelector, 
   getIsLoadingSelector,

@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { TFolder } from '../../../utils/types'
 import { fakeAPI } from '../../../api/fake-api'
+import { clearTasks } from '../tasks/tasks'
 
 type TFoldersState = {
   folders: TFolder[],
@@ -49,11 +50,18 @@ export const getFolders = createAsyncThunk(
   }
 );
 
-export const removeFolder = createAsyncThunk(
+interface RemoveFolderPayload {
+  id: string;
+  navigate: (path: string) => void;
+}
+
+export const removeFolder = createAsyncThunk<void, RemoveFolderPayload>(
   'folders/removeFolder', 
-  async (id: string, {dispatch}) => {
+  async ({ id, navigate }, {dispatch}) => {
     return await fakeAPI.removeFolder(id).then(() => {
       dispatch(getFolders());
+      dispatch(clearTasks());
+      navigate('/');
     })
   }
 );

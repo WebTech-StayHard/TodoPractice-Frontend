@@ -60,3 +60,7 @@ export let tasks: TTask[] = [
 export const deleteFolder = (id: string) => {
   folders = folders.filter(f => f.id !== id);
 };
+
+export const deleteTasksByFolderId = (folderid: string) => {
+  tasks = tasks.filter((t) => t.folderid !== folderid);
+}
