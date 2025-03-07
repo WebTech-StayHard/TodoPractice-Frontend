@@ -4,18 +4,18 @@ class FakeDataBase {
   _folders: TFolder[] = [
     {
       id: "1",
-      title: "Folder 1",
+      title: "Фронтенд",
       color: "#FF5B42",
     },
     {
       id: "2",
-      title: "Folder 2",
+      title: "Покупки",
       color: "#FFA454",
     },
     {
       id: "3",
-      title: "Folder 3",
-      color: "#FFFFFF",
+      title: "Фильмы и сериалы",
+      color: "#FFBBCC",
     },
   ];
 
@@ -23,37 +23,43 @@ class FakeDataBase {
     {
       id: "1",
       folderid: "1",
-      text: "Test 1",
+      text: "Изучить JavaScript",
       status: false,
     },
     {
       id: "2",
       folderid: "1",
-      text: "Test 2",
+      text: "Изучить паттерны проектирования",
       status: false,
     },
     {
       id: "3",
       folderid: "1",
-      text: "Test 3",
+      text: "ReactJS Hooks (useState, useReducer, useEffect и т.д.)",
       status: false,
     },
     {
       id: "4",
       folderid: "1",
-      text: "Test 4",
+      text: "Redux (redux-observable, redux-saga)",
       status: false,
     },
     {
       id: "5",
       folderid: "2",
-      text: "Folder 2 - Test",
+      text: "Макарошки",
       status: false,
     },
     {
       id: "6",
       folderid: "2",
-      text: "Folder 2 - Test 2",
+      text: "Картошку",
+      status: false,
+    },
+    {
+      id: "7",
+      folderid: "2",
+      text: "Биткоины",
       status: false,
     },
   ];

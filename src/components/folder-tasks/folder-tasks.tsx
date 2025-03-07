@@ -13,6 +13,7 @@ import {
   getTasksSelector,
 } from "../../services/slices/tasksSlice";
 import { getCurrentFolderSelector } from "../../services/selectors/foldersSelectors";
+import { Loader } from "../common/loader";
 
 export const FolderTasks: FC = () => {
   const dispatch = useDispatch();
@@ -35,11 +36,9 @@ export const FolderTasks: FC = () => {
 
   const taskElements = tasks.map((t, index) => <Task key={index} task={t} />);
 
-  return (
-    <FolderTasksUI
-      taskElements={taskElements}
-      folder={folder}
-      isLoading={isLoading}
-    />
+  return isLoading ? (
+    <Loader />
+  ) : (
+    <FolderTasksUI taskElements={taskElements} folder={folder} />
   );
 };

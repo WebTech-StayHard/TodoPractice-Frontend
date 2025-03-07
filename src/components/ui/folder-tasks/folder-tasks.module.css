@@ -74,7 +74,3 @@
   color: var(--cancel-btn-text-color);
   background-color: var(--cancel-btn-color);
 }
-
-.loader {
-  margin: auto 0;
-}

@@ -5,17 +5,8 @@ import { FolderTasksUIProps } from "./type";
 import { Title } from '../../common/title';
 import { Separator } from '../../common/separator';
 import { Button } from '../../common/buttons';
-import { Loader } from '../../common/loader';
 
-export const FolderTasksUI: FC<FolderTasksUIProps> = ({ taskElements, folder, isLoading }) => {
-  if (isLoading) {
-    return (
-      <div className={s.loader}>
-        <Loader />
-      </div>
-    )
-  }
-
+export const FolderTasksUI: FC<FolderTasksUIProps> = ({ taskElements, folder }) => {
   return !taskElements.length ? (
     <section className={s.noTasks}>
       <Title className={s.noTasks__title}>

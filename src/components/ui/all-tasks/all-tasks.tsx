@@ -1,11 +1,11 @@
-import { FC, ReactNode } from 'react';
-
-type AllTaskUIProps = {
-  elements: ReactNode[]
-}
+import { FC } from 'react';
+import s from './all-tasks.module.css';
+import { AllTaskUIProps } from './type';
 
 export const AllTasksUI: FC<AllTaskUIProps> = ({ elements }) => {
   return (
-    <div>All Tasks</div>
+    <section className={s.allTasks}>
+      { elements }
+    </section>
   );
 };
