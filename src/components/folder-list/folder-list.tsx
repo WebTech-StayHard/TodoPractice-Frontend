@@ -10,7 +10,7 @@ import {
 } from "../../store/slices/folders/folders";
 import { NavLink, useNavigate } from "react-router-dom";
 import { Folder } from '../folder/folder';
-import { FolderListUI } from '../ui/folder-list';
+import { FolderListUI } from '../ui/folder-list/folder-list';
 
 export const FolderList: FC = () => {
   const dispatch = useDispatch();

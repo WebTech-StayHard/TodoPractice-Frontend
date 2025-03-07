@@ -1,15 +1,21 @@
 import { FC } from "react";
-import { FolderListUIProps } from './type';
-import { Loader } from '../../common/loader/loader';
+import { FolderListUIProps } from "./type";
+import { Loader } from "../../common/loader/loader";
 
 import s from "./folder-list.module.css";
 
-export const FolderListUI: FC<FolderListUIProps> = ({ isLoading, folderElements }) => {
+export const FolderListUI: FC<FolderListUIProps> = ({
+  isLoading,
+  folderElements,
+}) => {
   return (
-    isLoading ?
-      <Loader /> :
+    isLoading ? 
+    <Loader />
+    : 
+    (
       <section className={s.folderList}>
         {folderElements}
       </section>
-  )
+    )
+  );
 };

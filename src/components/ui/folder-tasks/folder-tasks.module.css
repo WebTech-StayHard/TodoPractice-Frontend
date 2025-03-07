@@ -16,17 +16,17 @@
   margin: 1.5rem 0 2rem;
 }
 
-.taskListContainer {
+.folderTasksContainer {
   width: 60%;
   min-width: 22.5rem;
 }
 
-.taskListContainer__title {
+.folderTasksContainer__title {
   font-size: 2.25rem;
   font-weight: 700;
 }
 
-.taskList {
+.folderTasks {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -73,4 +73,8 @@
 .taskCancelBtn {
   color: var(--cancel-btn-text-color);
   background-color: var(--cancel-btn-color);
+}
+
+.loader {
+  margin: auto 0;
 }

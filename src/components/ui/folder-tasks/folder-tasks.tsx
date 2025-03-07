@@ -1,12 +1,21 @@
 import { FC } from "react";
-import s from "./task-list.module.css";
+import s from "./folder-tasks.module.css";
 import clsx from "clsx";
-import { TaskListUIProps } from "./type";
+import { FolderTasksUIProps } from "./type";
 import { Title } from '../../common/title';
 import { Separator } from '../../common/separator';
 import { Button } from '../../common/buttons';
+import { Loader } from '../../common/loader';
 
-export const TaskListUI: FC<TaskListUIProps> = ({ taskElements, folder }) => {
+export const FolderTasksUI: FC<FolderTasksUIProps> = ({ taskElements, folder, isLoading }) => {
+  if (isLoading) {
+    return (
+      <div className={s.loader}>
+        <Loader />
+      </div>
+    )
+  }
+
   return !taskElements.length ? (
     <section className={s.noTasks}>
       <Title className={s.noTasks__title}>
@@ -14,14 +23,14 @@ export const TaskListUI: FC<TaskListUIProps> = ({ taskElements, folder }) => {
       </Title>
     </section>
   ) : (
-    <section className={s.taskListContainer}>
-      <Title className={s.taskListContainer__title} color={folder?.color}>
+    <section className={s.folderTasksContainer}>
+      <Title className={s.folderTasksContainer__title} color={folder?.color}>
         {folder?.title}
       </Title>
 
       <Separator className={s.separator} />
 
-      <div className={s.taskList}>{taskElements}</div>
+      <div className={s.folderTasks}>{taskElements}</div>
 
       <form className={s.form} name="add-task">
         <input

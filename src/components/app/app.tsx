@@ -3,8 +3,9 @@ import { FC } from "react";
 
 import s from "./app.module.css";
 import { Sidebar } from '../sidebar/sidebar';
-import { TaskList } from '../task-list/task-list';
 import { TaskPage } from '../../pages/task-page';
+import { FolderTasks } from '../folder-tasks/folder-tasks';
+import { AllTasks } from '../all-tasks';
 
 const App: FC = () => {
   return (
@@ -16,8 +17,8 @@ const App: FC = () => {
       <div className={s.content}>
         <Routes>
           <Route path="/" element={<TaskPage />}>
-            <Route path=":folderId" element={<TaskList />} />
-            <Route path="all" element={<div>Full List</div>} />
+            <Route path=":folderId" element={<FolderTasks />} />
+            <Route path="all" element={<AllTasks />} />
           </Route>
         </Routes>
       </div>

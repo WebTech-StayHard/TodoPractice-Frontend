@@ -39,9 +39,9 @@ const tasksSlice = createSlice({
   }
 })
 
-export const getTasks = createAsyncThunk(
+export const getTasks = createAsyncThunk<TTask[], string>(
   'tasks/getTasks', 
-  async (folderid: string) => {
+  async (folderid) => {
     return fakeAPI.getTasks(folderid);
   }
 );

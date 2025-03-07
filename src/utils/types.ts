@@ -10,3 +10,7 @@ export type TFolder = {
   title: string;
   color: string;
 };
+
+export type TFolderWithTasks = TFolder & {
+  tasks: TTask[];
+}

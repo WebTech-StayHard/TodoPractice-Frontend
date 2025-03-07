@@ -4,7 +4,7 @@ import {
   folders,
   tasks,
 } from "../utils/constants";
-import { TFolder, TTask } from "../utils/types";
+import { TFolder, TFolderWithTasks, TTask } from "../utils/types";
 
 class FakeAPI {
   getFolders = async (): Promise<TFolder[]> => {
@@ -31,6 +31,19 @@ class FakeAPI {
       }, 500);
     });
   };
+
+  // getAllTasks = async (): Promise<TFolderWithTasks[]> => {
+  //   return await new Promise<TFolderWithTasks[]>((resolve) => {
+  //     setTimeout(() => {
+  //       const result: TFolderWithTasks[] = folders.map((folder) => ({
+  //         ...folder,
+  //         tasks: tasks.filter((t) => t.folderid === folder.id),
+  //       }));
+
+  //       resolve(result);
+  //     });
+  //   }, 300);
+  // };
 }
 
 export const fakeAPI = new FakeAPI();

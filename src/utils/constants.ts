@@ -63,4 +63,4 @@ export const deleteFolder = (id: string) => {
 
 export const deleteTasksByFolderId = (folderid: string) => {
   tasks = tasks.filter((t) => t.folderid !== folderid);
-}
+};
