@@ -50,7 +50,7 @@ export const getFolders = createAsyncThunk(
   }
 );
 
-interface RemoveFolderPayload {
+type RemoveFolderPayload = {
   id: string;
   navigate: (path: string) => void;
 }

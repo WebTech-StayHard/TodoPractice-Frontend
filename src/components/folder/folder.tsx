@@ -5,9 +5,11 @@ import { FolderUI } from '../ui/folder';
 export const Folder: FC<FolderProps> = ({folder, isActive, handleRemove}) => {
   const {id, title, color} = folder;
 
-  const removeFolder = () => {
+  const removeFolder = (evt: React.MouseEvent<HTMLButtonElement>) => {
+    evt.stopPropagation();
+    evt.preventDefault();
     handleRemove(id);
-  }
+  };
 
   return (
     <FolderUI 

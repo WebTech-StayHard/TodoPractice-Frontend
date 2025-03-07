@@ -17,6 +17,7 @@ const App: FC = () => {
         <Routes>
           <Route path="/" element={<TaskPage />}>
             <Route path=":folderId" element={<TaskList />} />
+            <Route path="all" element={<div>Full List</div>} />
           </Route>
         </Routes>
       </div>
