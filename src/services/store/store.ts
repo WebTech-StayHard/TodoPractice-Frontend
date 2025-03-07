@@ -1,11 +1,11 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import { foldersReducer } from './slices/folders/folders';
+import { foldersReducer } from '../slices/foldersSlice';
 import {
   useDispatch as dispatchHook,
   useSelector as selectorHook,
   TypedUseSelectorHook
 } from 'react-redux';
-import { tasksReducer } from './slices/tasks/tasks';
+import { tasksReducer } from '../slices/tasksSlice';
 
 const rootReducer = combineReducers({
   folders: foldersReducer,

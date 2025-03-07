@@ -1,16 +1,15 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { FC, useEffect } from "react";
-import { useDispatch, useSelector } from "../../store/store";
+import { useDispatch, useSelector } from "../../services/store/store";
 import {
   getCurrentFolderIdSelector,
-  getFolders,
   getFoldersSelector,
   getIsLoadingSelector,
-  removeFolder,
-} from "../../store/slices/folders/folders";
+} from "../../services/slices/foldersSlice";
 import { NavLink, useNavigate } from "react-router-dom";
 import { Folder } from '../folder/folder';
 import { FolderListUI } from '../ui/folder-list/folder-list';
+import { getFolders, removeFolder } from '../../services/thunks/foldersThunks';
 
 export const FolderList: FC = () => {
   const dispatch = useDispatch();

@@ -1,5 +1,5 @@
 import { createSelector } from "@reduxjs/toolkit";
-import { getFoldersSelector, getCurrentFolderIdSelector } from "./folders";
+import { getFoldersSelector, getCurrentFolderIdSelector } from "../slices/foldersSlice";
 
 export const getCurrentFolderSelector = createSelector(
   getFoldersSelector,

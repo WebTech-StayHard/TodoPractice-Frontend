@@ -1,7 +1,11 @@
-import { FC } from 'react';
+import { FC, ReactNode } from 'react';
 
-export const AllTasksUI: FC = () => {
+type AllTaskUIProps = {
+  elements: ReactNode[]
+}
+
+export const AllTasksUI: FC<AllTaskUIProps> = ({ elements }) => {
   return (
-    <div></div>
+    <div>All Tasks</div>
   );
 };
