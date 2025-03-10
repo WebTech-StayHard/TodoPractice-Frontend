@@ -1,14 +1,23 @@
-import { FC } from 'react';
-import { Button } from '../../common/buttons';
-import { addFolderFormProps } from './type';
+import { FC } from "react";
+import { Button } from "../../common/buttons";
+import { addFolderFormProps } from "./type";
+import s from "./add-folder-form.module.css";
 
-import s from './add-folder-form.module.css';
+export const AddFolderFormUI: FC<addFolderFormProps> = ({ handleSubmit }) => (
+  <form name="add-folder" className={s.form} onSubmit={handleSubmit}>
+    <input
+      id="folder-name"
+      name="folder-name"
+      type="text"
+      placeholder="Название папки"
+      className={s.form__input}
+      required
+    />
+    <div>
 
-export const AddFolderFormUI: FC<addFolderFormProps> = () => {
-  return (
-    <form name="add-folder">
-      <input />
-      <Button>Добавить</Button>
-    </form>
-  );
-};
+    </div>
+    <Button className={s.form__submit}>
+      Добавить
+    </Button>
+  </form>
+);

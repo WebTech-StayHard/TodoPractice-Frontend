@@ -1,0 +1,33 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form__input {
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  background-color: var(--addFolder-input-bg-color);
+  border: 1px solid var(--addFolder-input-border-color);
+}
+
+.form__input::placeholder {
+  color: var(--addFolder-placeholder-color);
+}
+
+.form__submit {
+  padding: 0.75rem 0;
+  border-radius: 0.25rem;
+  color: var(--primary-color);
+  font-weight: 600;
+  background-color: var(--success-color);
+  transition: all 0.25s ease-in-out;
+}
+
+.form__submit:hover {
+  transform: scale(1.05);
+}
+
+.form__submit:active {
+  opacity: 0.6;
+}

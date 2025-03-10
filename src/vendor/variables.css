@@ -14,8 +14,11 @@
 
   --separator-color: #F2F2F2;
 
-  --modal-bg-color: #242529;
-  --modal-btn-color: #fff;
-  --modal-box-shadow: #565656;
+  --modal-bg-color: #FFF;
+  --modal-btn-color: #333333;
+  --modal-box-shadow: #EFEFEF;
 
+  --addFolder-input-bg-color: #fff;
+  --addFolder-input-border-color: #d6d6d6;
+  --addFolder-placeholder-color: #C7C7C7;
 }
