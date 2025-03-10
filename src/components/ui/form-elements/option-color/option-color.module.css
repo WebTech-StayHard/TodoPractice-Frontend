@@ -1,0 +1,26 @@
+.option input[type=radio] {
+	display: none;
+}
+
+.option label {
+  display: block;
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 50%;
+  transition: all 0.2s ease-in-out;
+}
+ 
+/* Checked */
+.option input[type=radio]:checked + label {
+	border: 3px solid #525252;
+}
+ 
+/* Hover */
+.option:hover label {
+	transform: scale(1.1);
+}
+
+/* Hover */
+.option:active label {
+	opacity: 0.8;
+}
