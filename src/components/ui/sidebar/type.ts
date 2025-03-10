@@ -1,3 +1,7 @@
+import { RefObject } from "react";
+import { ModalSettings } from '../../../hooks/useModal/type';
+
 export type SidebarProps = {
-  handleAddFolder: () => void;
+  addFolderTabRef: RefObject<HTMLDivElement | null>;
+  modalSettings: ModalSettings;
 };
