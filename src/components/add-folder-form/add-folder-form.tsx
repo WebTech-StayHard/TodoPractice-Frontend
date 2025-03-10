@@ -20,7 +20,6 @@ export const AddFolderForm: FC = () => {
 
     dispatch(addFolder({ folderName, folderColor, navigate }));
     setFolderName('');
-    setFolderColor('');
   };
 
   return (
