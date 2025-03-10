@@ -1,5 +1,6 @@
 .removeButton {
-  padding: 0.3rem;
+  min-width: 1.25rem;
+  min-height: 1.25rem;
   background-color: var(--orange-color);
   border-radius: 50%;
 }

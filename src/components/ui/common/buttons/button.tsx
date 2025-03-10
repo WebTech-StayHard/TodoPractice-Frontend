@@ -1,12 +1,21 @@
-import { FC } from 'react';
+import { FC } from "react";
 
-import s from './button.module.css';
-import { ButtonUIProps } from './type';
-import clsx from 'clsx';
+import s from "./button.module.css";
+import { ButtonUIProps } from "./type";
+import clsx from "clsx";
 
-export const ButtonUI: FC<ButtonUIProps> = ({children, className = '', onClick}) => {
+export const ButtonUI: FC<ButtonUIProps> = ({
+  children,
+  disabled,
+  className = "",
+  onClick,
+}) => {
   return (
-    <button onClick={onClick} className={clsx(s.button, className)}>
+    <button 
+      onClick={onClick}
+      disabled={disabled}
+      className={clsx(s.button, className)}
+    >
       {children}
     </button>
   );

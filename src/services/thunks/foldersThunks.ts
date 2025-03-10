@@ -28,3 +28,19 @@ export const removeFolder = createAsyncThunk<void, RemoveFolderPayload>(
     });
   }
 );
+
+type AddFolderPayload = {
+  folderName: string;
+  folderColor: string;
+  navigate: (path: string) => void;
+};
+
+export const addFolder = createAsyncThunk<void, AddFolderPayload>(
+  "folders/addFolder",
+  async ({ folderName, folderColor, navigate }, { dispatch }) => {
+    return await fakeAPI.addFolder(folderName, folderColor).then((id) => {
+      dispatch(getFolders());
+      navigate('/' + id);
+    });
+  }
+);

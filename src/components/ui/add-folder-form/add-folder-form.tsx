@@ -2,14 +2,24 @@ import { FC } from "react";
 import { Button } from "../../common/buttons";
 import { AddFolderFormUIProps } from "./type";
 import s from "./add-folder-form.module.css";
-import { RadioGroup } from '../../form-elements';
+import { RadioGroup } from "../../form-elements";
 
-export const AddFolderFormUI: FC<AddFolderFormUIProps> = ({ formData, options, onColorChange, handleSubmit }) => (
+export const AddFolderFormUI: FC<AddFolderFormUIProps> = ({
+  isAddingFolder,
+  folderName,
+  folderColor,
+  options,
+  setFolderName,
+  setFolderColor,
+  handleSubmit,
+}) => (
   <form name="add-folder" className={s.form} onSubmit={handleSubmit}>
     <input
       id="folder-name"
       name="folder-name"
       type="text"
+      value={folderName}
+      onChange={(evt) => setFolderName(evt.target.value)}
       placeholder="Название папки"
       className={s.form__input}
       required
@@ -17,10 +27,15 @@ export const AddFolderFormUI: FC<AddFolderFormUIProps> = ({ formData, options, o
     <RadioGroup
       title="Цвет папки:"
       name="radio"
-      selected={formData.folderColor}
+      selected={folderColor}
       options={options}
-      onChange={onColorChange}
+      onChange={setFolderColor}
     />
-    <Button className={s.form__submit}>Добавить</Button>
+    <Button 
+      className={s.form__submit}
+      disabled={isAddingFolder}
+    >
+      { isAddingFolder ? 'Добавление...' : 'Добавить' }
+    </Button>
   </form>
 );

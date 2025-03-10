@@ -31,3 +31,15 @@
 .form__submit:active {
   opacity: 0.6;
 }
+
+.form__submit:disabled {
+  background-color: var(--disabled-btn-color);
+}
+
+.form__submit:hover:disabled {
+  transform: scale(1);
+}
+
+.form__submit:active:disabled {
+  opacity: 1;
+}

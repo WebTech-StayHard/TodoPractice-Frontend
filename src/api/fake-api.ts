@@ -11,6 +11,15 @@ class FakeAPI {
     });
   };
 
+  addFolder = async (title: string, color: string): Promise<string> => {
+    return await new Promise((resolve) => {
+      setTimeout(() => {
+        const newFolderId = db.addFolder(title, color);
+        resolve(newFolderId);
+      }, 500);
+    });
+  };
+
   removeFolder = async (id: string) => {
     return await new Promise((resolve) => {
       setTimeout(() => {

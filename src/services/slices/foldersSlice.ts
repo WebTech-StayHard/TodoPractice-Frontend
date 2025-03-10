@@ -1,6 +1,10 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { TFolder, TFolderWithTasks } from "../../utils/types";
-import { getFolders, getFoldersWithTasks } from "../thunks/foldersThunks";
+import {
+  addFolder,
+  getFolders,
+  getFoldersWithTasks,
+} from "../thunks/foldersThunks";
 
 type TFoldersState = {
   foldersWithTasks: TFolderWithTasks[];
@@ -8,6 +12,7 @@ type TFoldersState = {
   currentFolderId: string | null;
   isLoading: boolean;
   isLoadingAllTasks: boolean;
+  isAddingFolder: boolean;
 };
 
 const initialState: TFoldersState = {
@@ -15,7 +20,8 @@ const initialState: TFoldersState = {
   folders: [],
   currentFolderId: null,
   isLoading: false,
-  isLoadingAllTasks: false
+  isLoadingAllTasks: false,
+  isAddingFolder: false,
 };
 
 const foldersSlice = createSlice({
@@ -32,6 +38,7 @@ const foldersSlice = createSlice({
     getIsLoadingSelector: (state) => state.isLoading,
     getCurrentFolderIdSelector: (state) => state.currentFolderId,
     getIsLoadingAllTasks: (state) => state.isLoadingAllTasks,
+    getIsAddingFolder: (state) => state.isAddingFolder
   },
   extraReducers: (builder) => {
     builder
@@ -48,6 +55,7 @@ const foldersSlice = createSlice({
       .addCase(getFolders.rejected, (state) => {
         state.isLoading = false;
       })
+
       .addCase(getFoldersWithTasks.pending, (state) => {
         state.isLoadingAllTasks = true;
       })
@@ -60,6 +68,16 @@ const foldersSlice = createSlice({
       )
       .addCase(getFoldersWithTasks.rejected, (state) => {
         state.isLoadingAllTasks = false;
+      })
+
+      .addCase(addFolder.pending, (state) => {
+        state.isAddingFolder = true;
+      })
+      .addCase(addFolder.fulfilled, (state) => {
+        state.isAddingFolder = false;
+      })
+      .addCase(addFolder.rejected, (state) => {
+        state.isAddingFolder = false;
       });
   },
 });
@@ -71,5 +89,6 @@ export const {
   getFoldersSelector,
   getIsLoadingSelector,
   getCurrentFolderIdSelector,
-  getIsLoadingAllTasks
+  getIsLoadingAllTasks,
+  getIsAddingFolder
 } = foldersSlice.selectors;

@@ -1,11 +1,11 @@
-import { FormEvent } from 'react';
+import { Dispatch, FormEvent, SetStateAction } from 'react';
 
 export type AddFolderFormUIProps = {
-  formData: {
-    folderName: string;
-    folderColor: string;
-  }
+  isAddingFolder: boolean;
+  folderColor: string;
+  folderName: string;
   options: string[];
-	onColorChange: (color: string) => void;
+  setFolderColor: Dispatch<SetStateAction<string>>;
+	setFolderName: Dispatch<SetStateAction<string>>;
   handleSubmit: (evt: FormEvent) => void;
 }
