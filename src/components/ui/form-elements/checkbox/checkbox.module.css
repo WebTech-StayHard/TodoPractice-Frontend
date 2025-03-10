@@ -1,0 +1,117 @@
+/* Checkbox styles */
+.checkbox {
+  transition: opacity 0.2s ease-in;
+}
+
+.checkbox:hover {
+  opacity: 0.8;
+}
+
+.checkbox:active {
+  opacity: 0.6;
+}
+
+.checkbox.disabled:hover,
+.checkbox.disabled:active {
+  opacity: 1;
+}
+
+
+/* Custom checkbox styles */
+.customCheckbox {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+
+.customCheckbox+label {
+  position: relative;
+  display: flex;
+  align-items: center;
+  user-select: none;
+  z-index: 2;
+}
+
+.customCheckbox+label::before {
+  content: '';
+  display: inline-block;
+
+  width: 1.5rem;
+  height: 1.5rem;
+
+  border-radius: 50%;
+  border: 2px solid var(--custom-checkbox-hover-color);
+  transition: all 0.25s ease-in-out;
+  z-index: 0;
+}
+
+
+/* Активный чекбокс - Стили для кастомного чекбокса */
+.customCheckbox:checked+label::before {
+  background-color: var(--custom-checkbox-color);
+  border-color: var(--custom-checkbox-color);
+}
+
+/* Активный чекбокс - Стили для иконки чекбокса */
+.customCheckbox:checked+label .customCheckboxIcon::before,
+.customCheckbox:checked+label .customCheckboxIcon::after {
+  background-color: #fff;
+  opacity: 1;
+}
+
+
+/* Неактивный чекбокс - Стили для кастомного чекбокса при наведении  */
+.customCheckbox:not(:disabled):not(:checked)+label:hover::before {
+  background-color: var(--custom-checkbox-hover-color);
+}
+
+/* Неактивный чекбокс - Стиль для иконки чекбокса при наведении  */
+.customCheckbox:not(:disabled):not(:checked)+label:hover .customCheckboxIcon::before,
+.customCheckbox:not(:disabled):not(:checked)+label:hover .customCheckboxIcon::after {
+  background-color: #B3B3B3;
+  opacity: 1;
+}
+
+
+/* Отключённый чекбокс */
+.customCheckbox:disabled+label::before {
+  background-color: var(--disabled-btn-color);
+}
+
+
+/* Checkbox Icon */
+.customCheckboxIcon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.customCheckboxIcon::before,
+.customCheckboxIcon::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 2px;
+  border-radius: 0.25rem;
+  opacity: 0;
+}
+
+.customCheckboxIcon::before {
+  top: 12.5px;
+  left: 5.1px;
+  width: 7px;
+  height: 2px;
+  transform: rotate(45deg);
+}
+
+.customCheckboxIcon::after {
+  top: 11.5px;
+  left: 8.5px;
+  width: 11px;
+  height: 2px;
+  transform: rotate(-45deg);
+}

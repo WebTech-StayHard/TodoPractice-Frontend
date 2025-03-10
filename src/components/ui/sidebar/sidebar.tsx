@@ -9,7 +9,7 @@ import listIcon from "../../../assets/images/list.svg";
 import plusIcon from "../../../assets/images/plus.svg";
 import { NavLink } from "react-router-dom";
 import { Modal } from "../../modal";
-import { AddFolderForm } from '../../add-folder-form';
+import { AddFolderForm } from "../../add-folder-form";
 
 export const SidebarUI: FC<SidebarProps> = ({
   addFolderTabRef,
@@ -27,7 +27,13 @@ export const SidebarUI: FC<SidebarProps> = ({
     <FolderList />
 
     <div ref={addFolderTabRef}>
-      <TabContainer onClick={modalSettings.openModal}>
+      <TabContainer
+        onClick={
+          modalSettings.isOpen
+            ? modalSettings.closeModal
+            : modalSettings.openModal
+        }
+      >
         <Tab text="Добавить папку">
           <img className="tab-icon" src={plusIcon} alt="plus" />
         </Tab>
