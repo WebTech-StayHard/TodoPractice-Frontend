@@ -11,7 +11,7 @@ export const ButtonUI: FC<ButtonUIProps> = ({
   onClick,
 }) => {
   return (
-    <button 
+    <button
       onClick={onClick}
       disabled={disabled}
       className={clsx(s.button, className)}

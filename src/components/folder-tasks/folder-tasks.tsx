@@ -39,6 +39,9 @@ export const FolderTasks: FC = () => {
   return isLoading ? (
     <Loader />
   ) : (
-    <FolderTasksUI taskElements={taskElements} folder={folder} />
+    <FolderTasksUI 
+      taskElements={taskElements} 
+      folder={folder}
+    />
   );
 };

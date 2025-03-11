@@ -5,3 +5,17 @@
   padding: 3rem;
   height: 100%;
 }
+
+.noTasks {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.noTasks__title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--gray-color);
+}

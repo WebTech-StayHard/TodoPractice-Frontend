@@ -21,12 +21,16 @@ export const AllTasks: FC = () => {
   }, []);
 
   const elements = allTasks.map((folder) => {
-    if (!folder.tasks.length) return null;
-
     const { tasks, ...folderData } = folder;
-    const taskElements = tasks.map((t, index) => <Task key={index} task={t} />);
+    const taskElements = tasks.map((t) => <Task key={t.id} task={t} />);
 
-    return <FolderTasksUI folder={folderData} taskElements={taskElements} />;
+    return (
+      <FolderTasksUI
+        key={folder.id}
+        folder={folderData}
+        taskElements={taskElements}
+      />
+    );
   });
 
   return isLoading ? <Loader /> : <AllTasksUI elements={elements} />;

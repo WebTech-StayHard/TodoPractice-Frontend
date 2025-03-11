@@ -1,17 +1,3 @@
-.noTasks {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-}
-
-.noTasks__title {
-  font-size: 3rem;
-  font-weight: 700;
-  color: var(--gray-color);
-}
-
 .separator {
   margin: 1.5rem 0 2rem;
 }
@@ -31,46 +17,4 @@
   flex-direction: column;
   gap: 1.5rem;
   margin-bottom: 1.5rem;
-}
-
-.form {
-  max-width: 80%;
-}
-
-.taskInput {
-  width: 100%;
-  padding: 0.5rem 1rem;
-  border-radius: 0.25rem;
-  color: var(--primary-color);
-  background-color: var(--theme-primary-color);
-}
-
-.taskBtnContainer {
-  display: flex;
-  gap: 0.75rem;
-  margin: 1rem 0 0 0;
-}
-
-.taskBtn {
-  padding: 0.5rem 1rem;
-  border-radius: 0.25rem;
-  transition: all 0.25s linear;
-}
-
-.taskBtn:hover {
-  transform: scale(1.05);
-}
-
-.taskBtn:active {
-  opacity: 0.7
-}
-
-.taskSubmitBtn {
-  color: var(--primary-color);
-  background-color: var(--success-color);
-}
-
-.taskCancelBtn {
-  color: var(--cancel-btn-text-color);
-  background-color: var(--cancel-btn-color);
 }
