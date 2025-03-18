@@ -1,37 +1,21 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { FC, useEffect } from "react";
+import { FC } from "react";
 import { AllTasksUI } from "../ui/all-tasks";
-import { useDispatch, useSelector } from "../../services/store/store";
+import { useSelector } from "../../services/store/store";
 import {
-  getFoldersWithTasksSelector,
-  getIsLoadingAllTasks,
+  getFoldersSelector,
+  getIsLoadingSelector,
 } from "../../services/slices/foldersSlice";
-import { getFoldersWithTasks } from "../../services/thunks/foldersThunks";
-import { FolderTasksUI } from "../ui/folder-tasks";
-import { Task } from "../task";
 import { Loader } from "../common/loader";
+import { FolderTasks } from "../folder-tasks/folder-tasks";
 
 export const AllTasks: FC = () => {
-  const dispatch = useDispatch();
-  const allTasks = useSelector(getFoldersWithTasksSelector);
-  const isLoading = useSelector(getIsLoadingAllTasks);
+  const folders = useSelector(getFoldersSelector);
+  const isLoading = useSelector(getIsLoadingSelector);
 
-  useEffect(() => {
-    dispatch(getFoldersWithTasks());
-  }, []);
-
-  const elements = allTasks.map((folder) => {
-    const { tasks, ...folderData } = folder;
-    const taskElements = tasks.map((t) => <Task key={t.id} task={t} />);
-
-    return (
-      <FolderTasksUI
-        key={folder.id}
-        folder={folderData}
-        taskElements={taskElements}
-      />
-    );
-  });
+  const elements = folders.map((folder) => (
+    <FolderTasks key={folder.id} folder={folder} />
+  ));
 
   return isLoading ? <Loader /> : <AllTasksUI elements={elements} />;
 };

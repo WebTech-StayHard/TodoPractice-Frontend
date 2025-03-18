@@ -9,12 +9,14 @@ import plusIcon from "../../../assets/images/plus-white.svg";
 
 export const AddTaskFormUI: FC<AddTaskFormUIProps> = ({
   isFormShow,
+  taskText,
+  onTaskTextChange,
   showForm,
   hideForm,
   handleSubmit
 }) => {
   return !isFormShow ? (
-    <Button className={clsx(s.taskBtn, s.newTaskBtn)} onClick={showForm}>
+    <Button extraClass={clsx(s.taskBtn, s.newTaskBtn)} onClick={showForm}>
       <img src={plusIcon} className={s.newTaskBtn__icon} alt="plusIcon" />
       <span className={s.newTaskBtn__text}>
         Новая задача
@@ -26,12 +28,15 @@ export const AddTaskFormUI: FC<AddTaskFormUIProps> = ({
         id="text-task"
         className={s.taskInput}
         placeholder="Текст задачи"
+        value={taskText}
+        onChange={onTaskTextChange}
+        required
       />
       <div className={s.taskBtnContainer}>
-        <Button className={clsx(s.taskBtn, s.taskSubmitBtn)}>
+        <Button extraClass={clsx(s.taskBtn, s.taskSubmitBtn)}>
           Добавить задачу
         </Button>
-        <Button className={clsx(s.taskBtn, s.taskCancelBtn)} onClick={hideForm}>
+        <Button extraClass={clsx(s.taskBtn, s.taskCancelBtn)} onClick={hideForm}>
           Отмена
         </Button>
       </div>

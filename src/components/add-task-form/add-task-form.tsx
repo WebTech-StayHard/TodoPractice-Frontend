@@ -1,22 +1,47 @@
-import { FC, FormEvent, useState } from "react";
+import { ChangeEvent, FC, FormEvent, useState } from "react";
 import { AddTaskFormUI } from "../ui/add-task-form";
+import { useDispatch } from "../../services/store/store";
+import { addTask } from "../../services/thunks/tasksThunks";
+import { AddTaskFormProps } from './type';
 
-export const AddTaskForm: FC = () => {
+export const AddTaskForm: FC<AddTaskFormProps> = ({ folderid }) => {
+  const dispatch = useDispatch();
   const [isFormShow, setIsFormShow] = useState(false);
+  const [taskText, setTaskText] = useState("");
+
+  const handleSubmit = async (evt: FormEvent) => {
+    evt.preventDefault();
+
+    if (!folderid) return;
+
+    try {
+      await dispatch(
+        addTask({
+          folderid: folderid,
+          text: taskText,
+        })
+      );
+      setIsFormShow(false);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const onTaskTextChange = (evt: ChangeEvent<HTMLInputElement>) => {
+    setTaskText(evt.target.value);
+  };
 
   const showForm = () => setIsFormShow(true);
   const hideForm = () => setIsFormShow(false);
-  const handleSubmit = (evt: FormEvent) => {
-    evt.preventDefault();
-    setIsFormShow(false);
-  }
-  
+
   return (
     <AddTaskFormUI
       isFormShow={isFormShow}
+      taskText={taskText}
+      onTaskTextChange={onTaskTextChange}
       showForm={showForm}
       hideForm={hideForm}
       handleSubmit={handleSubmit}
     />
-  )
+  );
 };

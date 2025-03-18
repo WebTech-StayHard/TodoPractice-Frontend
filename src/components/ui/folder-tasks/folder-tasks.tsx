@@ -24,7 +24,9 @@ export const FolderTasksUI: FC<FolderTasksUIProps> = ({
         </div>
       }
 
-      <AddTaskForm />
+      <AddTaskForm
+        folderid={folder?.id}
+      />
     </section>
   );
 };

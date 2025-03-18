@@ -1,15 +1,14 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import { FC, useEffect } from "react";
+import { FC } from "react";
 import { useDispatch, useSelector } from "../../services/store/store";
 import {
   getCurrentFolderIdSelector,
   getFoldersSelector,
-  getIsLoadingSelector,
+  getIsLoadingSelector
 } from "../../services/slices/foldersSlice";
 import { NavLink, useNavigate } from "react-router-dom";
 import { Folder } from '../folder/folder';
 import { FolderListUI } from '../ui/folder-list/folder-list';
-import { getFolders, removeFolder } from '../../services/thunks/foldersThunks';
+import { removeFolderAsync } from '../../services/thunks/foldersThunks';
 
 export const FolderList: FC = () => {
   const dispatch = useDispatch();
@@ -18,12 +17,13 @@ export const FolderList: FC = () => {
   const currentFolderId = useSelector(getCurrentFolderIdSelector);
   const isLoading = useSelector(getIsLoadingSelector);
 
-  useEffect(() => {
-    dispatch(getFolders());
-  }, []);
-
-  const handleRemove = (id: string) => {
-    dispatch(removeFolder({id, navigate}));
+  const handleRemove = async (id: string) => {
+    try {
+      await dispatch(removeFolderAsync(id));
+      navigate('/');
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   const folderElements = folders.map((f) => (

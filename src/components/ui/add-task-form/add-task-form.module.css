@@ -32,20 +32,6 @@
   margin: 1rem 0 0 0;
 }
 
-.taskBtn {
-  padding: 0.5rem 1rem;
-  border-radius: 0.25rem;
-  transition: all 0.25s linear;
-}
-
-.taskBtn:hover {
-  transform: scale(1.05);
-}
-
-.taskBtn:active {
-  opacity: 0.7
-}
-
 .taskSubmitBtn {
   color: var(--primary-color);
   background-color: var(--success-color);

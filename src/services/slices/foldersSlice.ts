@@ -1,27 +1,27 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { TFolder, TFolderWithTasks } from "../../utils/types";
+import { TFolder } from "../../utils/types";
 import {
-  addFolder,
-  getFolders,
-  getFoldersWithTasks,
+  addFolderAsync,
+  getFoldersAsync,
+  removeFolderAsync,
 } from "../thunks/foldersThunks";
 
 type TFoldersState = {
-  foldersWithTasks: TFolderWithTasks[];
   folders: TFolder[];
   currentFolderId: string | null;
   isLoading: boolean;
-  isLoadingAllTasks: boolean;
+
   isAddingFolder: boolean;
+  isRemovingFolder: string[];
 };
 
 const initialState: TFoldersState = {
-  foldersWithTasks: [],
   folders: [],
   currentFolderId: null,
   isLoading: false,
-  isLoadingAllTasks: false,
+
   isAddingFolder: false,
+  isRemovingFolder: [],
 };
 
 const foldersSlice = createSlice({
@@ -31,64 +31,66 @@ const foldersSlice = createSlice({
     setCurrentFolder: (state, { payload }: PayloadAction<string>) => {
       state.currentFolderId = payload;
     },
+    addFolder: (state, { payload }: PayloadAction<TFolder>) => {
+      state.folders.push(payload);
+    },
+    removeFolder: (state, { payload }: PayloadAction<string>) => {
+      state.folders = state.folders.filter((f) => f.id !== payload);
+    },
   },
   selectors: {
-    getFoldersWithTasksSelector: (state) => state.foldersWithTasks,
     getFoldersSelector: (state) => state.folders,
-    getIsLoadingSelector: (state) => state.isLoading,
     getCurrentFolderIdSelector: (state) => state.currentFolderId,
-    getIsLoadingAllTasks: (state) => state.isLoadingAllTasks,
-    getIsAddingFolder: (state) => state.isAddingFolder
+    getIsLoadingSelector: (state) => state.isLoading,
+    getIsAddingFolder: (state) => state.isAddingFolder,
   },
   extraReducers: (builder) => {
     builder
-      .addCase(getFolders.pending, (state) => {
+      // Getting folders
+      .addCase(getFoldersAsync.pending, (state) => {
         state.isLoading = true;
       })
       .addCase(
-        getFolders.fulfilled,
+        getFoldersAsync.fulfilled,
         (state, { payload }: PayloadAction<TFolder[]>) => {
           state.isLoading = false;
           state.folders = payload;
         }
       )
-      .addCase(getFolders.rejected, (state) => {
+      .addCase(getFoldersAsync.rejected, (state) => {
         state.isLoading = false;
       })
 
-      .addCase(getFoldersWithTasks.pending, (state) => {
-        state.isLoadingAllTasks = true;
-      })
-      .addCase(
-        getFoldersWithTasks.fulfilled,
-        (state, { payload }: PayloadAction<TFolderWithTasks[]>) => {
-          state.isLoadingAllTasks = false;
-          state.foldersWithTasks = payload;
-        }
-      )
-      .addCase(getFoldersWithTasks.rejected, (state) => {
-        state.isLoadingAllTasks = false;
-      })
-
-      .addCase(addFolder.pending, (state) => {
+      // Adding Folder
+      .addCase(addFolderAsync.pending, (state) => {
         state.isAddingFolder = true;
       })
-      .addCase(addFolder.fulfilled, (state) => {
+      .addCase(addFolderAsync.fulfilled, (state) => {
         state.isAddingFolder = false;
       })
-      .addCase(addFolder.rejected, (state) => {
+      .addCase(addFolderAsync.rejected, (state) => {
         state.isAddingFolder = false;
+      })
+
+      // Removing Folder
+      .addCase(removeFolderAsync.pending, (state) => {
+        // state.isRemovingFolder = true;
+      })
+      .addCase(removeFolderAsync.fulfilled, (state) => {
+        // state.isRemovingFolder = false;
+      })
+      .addCase(removeFolderAsync.rejected, (state) => {
+        // state.isRemovingFolder = false;
       });
   },
 });
 
-export const foldersReducer = foldersSlice.reducer;
-export const { setCurrentFolder } = foldersSlice.actions;
+export const reducer = foldersSlice.reducer;
+export const { setCurrentFolder, addFolder, removeFolder } =
+  foldersSlice.actions;
 export const {
-  getFoldersWithTasksSelector,
   getFoldersSelector,
   getIsLoadingSelector,
   getCurrentFolderIdSelector,
-  getIsLoadingAllTasks,
-  getIsAddingFolder
+  getIsAddingFolder,
 } = foldersSlice.selectors;

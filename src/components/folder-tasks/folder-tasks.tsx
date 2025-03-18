@@ -1,47 +1,11 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-
-import { FC, useEffect } from "react";
+import { FC } from "react";
 
 import { Task } from "../task";
 import { FolderTasksUI } from "../ui/folder-tasks";
-import { useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "../../services/store/store";
-import { setCurrentFolder } from "../../services/slices/foldersSlice";
-import { getTasks } from "../../services/thunks/tasksThunks";
-import {
-  getIsLoadingSelector,
-  getTasksSelector,
-} from "../../services/slices/tasksSlice";
-import { getCurrentFolderSelector } from "../../services/selectors/foldersSelectors";
-import { Loader } from "../common/loader";
+import { FolderTasksProps } from "./type";
 
-export const FolderTasks: FC = () => {
-  const dispatch = useDispatch();
-  const { folderId } = useParams<"folderId">();
+export const FolderTasks: FC<FolderTasksProps> = ({ folder }) => {
+  const taskElements = folder.tasks.map((t, index) => <Task key={index} task={t} />);
 
-  const isLoading = useSelector(getIsLoadingSelector);
-  const tasks = useSelector(getTasksSelector);
-  const folder = useSelector(getCurrentFolderSelector) || null;
-
-  useEffect(() => {
-    if (folderId) {
-      dispatch(setCurrentFolder(folderId));
-      dispatch(getTasks(folderId));
-    }
-
-    return () => {
-      dispatch(setCurrentFolder(""));
-    };
-  }, [folderId]);
-
-  const taskElements = tasks.map((t, index) => <Task key={index} task={t} />);
-
-  return isLoading ? (
-    <Loader />
-  ) : (
-    <FolderTasksUI 
-      taskElements={taskElements} 
-      folder={folder}
-    />
-  );
+  return <FolderTasksUI folder={folder} taskElements={taskElements} />;
 };

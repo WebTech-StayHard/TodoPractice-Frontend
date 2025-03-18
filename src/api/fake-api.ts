@@ -1,50 +1,41 @@
-import { database as db } from "../utils/database";
-import { TFolder, TFolderWithTasks, TTask } from "../utils/types";
+import { database as db } from "../utils/database/database";
+import { TFolder, TTask } from "../utils/types";
 
 class FakeAPI {
-  getFoldersWithTasks = async (): Promise<TFolderWithTasks[]> => {
-    return await new Promise<TFolderWithTasks[]>((resolve) => {
-      setTimeout(() => {
-        const result = db.getFoldersWithTasks();
-        resolve(result);
-      }, 300);
-    });
-  };
-
-  addFolder = async (title: string, color: string): Promise<string> => {
-    return await new Promise((resolve) => {
-      setTimeout(() => {
-        const newFolderId = db.addFolder(title, color);
-        resolve(newFolderId);
-      }, 500);
-    });
-  };
-
-  removeFolder = async (id: string) => {
-    return await new Promise((resolve) => {
-      setTimeout(() => {
-        db.deleteTasksByFolderId(id);
-        db.deleteFolder(id);
-        resolve(true);
-      }, 500);
-    });
-  };
-
   getFolders = async (): Promise<TFolder[]> => {
     return await new Promise<TFolder[]>((resolve) => {
       setTimeout(() => {
         const result = db.getFolders();
         resolve(result);
+      }, 300);
+    });
+  };
+
+  addFolder = async (title: string, color: string): Promise<TFolder> => {
+    return await new Promise((resolve) => {
+      setTimeout(() => {
+        const folder = db.addFolder(title, color);
+        resolve(folder);
       }, 500);
     });
   };
 
-  getTasks = async (folderid: string): Promise<TTask[]> => {
-    return await new Promise<TTask[]>((resolve) => {
+  removeFolder = async (id: string): Promise<string> => {
+    return await new Promise((resolve) => {
       setTimeout(() => {
-        const result = db.getTasksByFolderId(folderid);
-        resolve(result);
-      }, 300);
+        db.deleteTasksByFolderId(id);
+        db.deleteFolder(id);
+        resolve(id);
+      }, 500);
+    });
+  };
+
+  addTask = async(folderid: string, text: string): Promise<TTask> => {
+    return await new Promise((resolve) => {
+      setTimeout(() => {
+        const task = db.addTask(folderid, text);
+        resolve(task);
+      }, 500)
     });
   };
 }

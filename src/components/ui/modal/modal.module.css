@@ -11,10 +11,6 @@
 }
 
 .closeBtn {
-  border-radius: 50%;
-}
-
-.closeBtn {
   position: absolute;
 
   top: -0.75rem;
@@ -24,6 +20,15 @@
   height: 1.75rem;
   background-color: var(--modal-btn-color);
   transition: all 0.2s ease-in-out;
+  border-radius: 50%;
+}
+
+.closeBtn:hover {
+  transform: scale(1.1);
+}
+
+.closeBtn:active {
+  opacity: 0.7;
 }
 
 .closeBtn::before,
@@ -47,12 +52,4 @@
 
 .closeBtn::after {
   transform: rotate(-45deg);
-}
-
-.closeBtn:hover {
-  transform: scale(1.1);
-}
-
-.closeBtn:active {
-  opacity: 0.7;
 }

@@ -1,19 +1,14 @@
-// Сущность 'Task'
-export type TTask = {
+export interface TTask {
   id: string;
   folderid: string;
   text: string;
   status: boolean;
 };
 
-// Сущность 'Folder'
-export type TFolder = {
+export interface TFolder {
   id: string;
   title: string;
   color: string;
+  tasks: TTask[];
 };
 
-// Объединение сущностей
-export type TFolderWithTasks = TFolder & {
-  tasks: TTask[];
-}

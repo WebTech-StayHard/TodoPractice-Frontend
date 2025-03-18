@@ -1,25 +1,33 @@
 import { FC, FormEvent, useState } from "react";
 import { AddFolderFormUI } from "../ui/add-folder-form";
 import { colors } from "../../utils/constants";
-import { addFolder } from "../../services/thunks/foldersThunks";
+
 import { useDispatch, useSelector } from "../../services/store/store";
 import { useNavigate } from "react-router-dom";
-import { getIsAddingFolder } from '../../services/slices/foldersSlice';
+import { getIsAddingFolder } from "../../services/slices/foldersSlice";
+import { addFolderAsync } from "../../services/thunks/foldersThunks";
 
 export const AddFolderForm: FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isAddingFolder = useSelector(getIsAddingFolder);
-  const [folderName, setFolderName] = useState('');
+  const [folderName, setFolderName] = useState("");
   const [folderColor, setFolderColor] = useState(colors[0]);
 
-  const handleSubmit = (evt: FormEvent) => {
+  const handleSubmit = async (evt: FormEvent) => {
     evt.preventDefault();
 
     if (!folderName && !folderColor) return;
 
-    dispatch(addFolder({ folderName, folderColor, navigate }));
-    setFolderName('');
+    try {
+      const folderId = await dispatch(
+        addFolderAsync({ folderName, folderColor })
+      ).unwrap();
+      setFolderName("");
+      navigate("/" + folderId);
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (

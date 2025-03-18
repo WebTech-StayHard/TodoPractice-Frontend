@@ -1,0 +1,1 @@
+export { NotFoundUI } from './not-found';
