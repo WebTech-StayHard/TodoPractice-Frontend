@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { TFolder } from "../../utils/types";
+import { TFolder, TTask } from "../../utils/types";
 import {
   addFolderAsync,
   getFoldersAsync,
@@ -45,6 +45,10 @@ const foldersSlice = createSlice({
         state.isRemovingFolder.push(payload);
       }
     },
+    addTask: (state, { payload }: PayloadAction<TTask>) => {
+      const folder = state.folders.find((f) => f.id === payload.folderid);
+      folder?.tasks.push(payload);
+    }
   },
   selectors: {
     getFoldersSelector: (state) => state.folders,
@@ -89,6 +93,7 @@ export const {
   addFolder,
   removeFolder,
   setIsRemovingFolder,
+  addTask
 } = foldersSlice.actions;
 export const {
   getFoldersSelector,

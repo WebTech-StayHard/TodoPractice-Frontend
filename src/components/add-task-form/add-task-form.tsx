@@ -1,7 +1,7 @@
 import { ChangeEvent, FC, FormEvent, useState } from "react";
 import { AddTaskFormUI } from "../ui/add-task-form";
 import { useDispatch } from "../../services/store/store";
-import { addTask } from "../../services/thunks/tasksThunks";
+import { addTaskAsync } from "../../services/thunks/tasksThunks";
 import { AddTaskFormProps } from './type';
 
 export const AddTaskForm: FC<AddTaskFormProps> = ({ folderid }) => {
@@ -16,7 +16,7 @@ export const AddTaskForm: FC<AddTaskFormProps> = ({ folderid }) => {
 
     try {
       await dispatch(
-        addTask({
+        addTaskAsync({
           folderid: folderid,
           text: taskText,
         })
