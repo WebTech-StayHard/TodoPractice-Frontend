@@ -7,6 +7,7 @@ import { getIsLoadingSelector, setCurrentFolder } from "../../services/slices/fo
 import { getCurrentFolderSelector } from "../../services/selectors/foldersSelectors";
 import { Loader } from "../common/loader";
 import { FolderTasks } from "./folder-tasks";
+import { NotFound } from '../not-found';
 
 export const FolderTasksContainer: FC = () => {
   const dispatch = useDispatch();
@@ -26,7 +27,7 @@ export const FolderTasksContainer: FC = () => {
   }, [folderId]);
 
   if (!folder) {
-    return <div>Папка не найдена!</div>;
+    return <NotFound title='Папка не найдена!' />;
   }
 
   return isLoading ? <Loader /> : <FolderTasks folder={folder} />;

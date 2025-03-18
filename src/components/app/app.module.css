@@ -11,6 +11,7 @@
 }
 
 .content {
+  padding: 3rem 4rem;
   background-color: var(--theme-secondary-color);
   flex: 1 1;
 }
