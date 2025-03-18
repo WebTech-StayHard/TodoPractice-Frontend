@@ -7,15 +7,11 @@ import s from "./folder-list.module.css";
 export const FolderListUI: FC<FolderListUIProps> = ({
   isLoading,
   folderElements,
-}) => {
-  return (
-    isLoading ? 
+}) =>
+  isLoading ? (
     <Loader />
-    : 
-    (
-      <section className={s.folderList}>
-        {folderElements}
-      </section>
-    )
+  ) : (
+    <section className={s.folderList}>
+      {folderElements}
+    </section>
   );
-};

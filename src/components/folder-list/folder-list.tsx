@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from "../../services/store/store";
 import {
   getCurrentFolderIdSelector,
   getFoldersSelector,
-  getIsLoadingSelector
+  getIsLoadingSelector,
+  getIsRemovingFolder
 } from "../../services/slices/foldersSlice";
 import { NavLink, useNavigate } from "react-router-dom";
 import { Folder } from '../folder/folder';
@@ -13,8 +14,10 @@ import { removeFolderAsync } from '../../services/thunks/foldersThunks';
 export const FolderList: FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  
   const folders = useSelector(getFoldersSelector);
   const currentFolderId = useSelector(getCurrentFolderIdSelector);
+  const isRemoving = useSelector(getIsRemovingFolder);
   const isLoading = useSelector(getIsLoadingSelector);
 
   const handleRemove = async (id: string) => {
@@ -35,6 +38,7 @@ export const FolderList: FC = () => {
       <Folder
         folder={f}
         isActive={f.id === currentFolderId}
+        isRemoving={isRemoving}
         handleRemove={handleRemove}
       />
     </NavLink>
