@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from '../../services/store/store';
 import { getIsInitializedSelector } from '../../services/slices/appSlice';
 import { initialize } from '../../services/thunks/appThunk';
 import { AppPreloader } from '../app-preloader';
+import { HomePage } from '../../pages/home-page';
 
 const App: FC = () => {
   const dispatch = useDispatch();
@@ -33,7 +34,8 @@ const App: FC = () => {
 
       <div className={s.content}>
         <Routes>
-          <Route path="/" element={<TaskPage />}>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/folders" element={<TaskPage />}>
             <Route path=":folderId" element={<FolderTasksContainer />} />
             <Route path="all" element={<AllTasks />} />
           </Route>

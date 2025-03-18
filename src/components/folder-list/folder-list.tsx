@@ -31,7 +31,7 @@ export const FolderList: FC = () => {
 
   const folderElements = folders.map((f) => (
     <NavLink 
-      to={`/${f.id}`} 
+      to={`/folders/${f.id}`} 
       className='link' 
       key={f.id}
     >

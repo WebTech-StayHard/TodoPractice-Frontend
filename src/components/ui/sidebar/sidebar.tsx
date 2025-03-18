@@ -16,7 +16,7 @@ export const SidebarUI: FC<SidebarProps> = ({
   modalSettings,
 }) => (
   <aside className={s.sidebar}>
-    <NavLink to="/all" className="link">
+    <NavLink to="/folders/all" className="link">
       <TabContainer>
         <Tab text="Все задачи">
           <img className="tab-icon" src={listIcon} alt="list" />
