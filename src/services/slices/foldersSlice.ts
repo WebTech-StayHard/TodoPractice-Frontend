@@ -1,9 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { TFolder, TTask } from "../../utils/types";
-import {
-  addFolderAsync,
-  getFoldersAsync,
-} from "../thunks/foldersThunks";
+import { addFolderAsync, getFoldersAsync } from "../thunks/foldersThunks";
+import { toggleArrayItem } from '../../utils/helpers/arrayHelper';
 
 type TFoldersState = {
   folders: TFolder[];
@@ -12,6 +10,7 @@ type TFoldersState = {
 
   isAddingFolder: boolean;
   isRemovingFolder: string[];
+  isUpdatingTaskStatus: string[];
 };
 
 const initialState: TFoldersState = {
@@ -21,6 +20,7 @@ const initialState: TFoldersState = {
 
   isAddingFolder: false,
   isRemovingFolder: [],
+  isUpdatingTaskStatus: []
 };
 
 const foldersSlice = createSlice({
@@ -37,17 +37,22 @@ const foldersSlice = createSlice({
       state.folders = state.folders.filter((f) => f.id !== payload);
     },
     setIsRemovingFolder: (state, { payload }: PayloadAction<string>) => {
-      if (state.isRemovingFolder.includes(payload)) {
-        state.isRemovingFolder = state.isRemovingFolder.filter(
-          (el) => el !== payload
-        );
-      } else {
-        state.isRemovingFolder.push(payload);
-      }
+      state.isRemovingFolder = toggleArrayItem(state.isRemovingFolder, payload);
     },
     addTask: (state, { payload }: PayloadAction<TTask>) => {
       const folder = state.folders.find((f) => f.id === payload.folderid);
       folder?.tasks.push(payload);
+    },
+    setTaskStatus: (state, { payload }: PayloadAction<TTask>) => {
+      const folder = state.folders.find((f) => f.id === payload.folderid);
+      const task = folder?.tasks.find((t) => t.id === payload.id);
+
+      if (task) {
+        task.status = payload.status;
+      }
+    },
+    setIsUpdatingStatusTask: (state, { payload }: PayloadAction<string>) => {
+      state.isUpdatingTaskStatus = toggleArrayItem(state.isUpdatingTaskStatus, payload);
     }
   },
   selectors: {
@@ -56,6 +61,7 @@ const foldersSlice = createSlice({
     getIsLoadingSelector: (state) => state.isLoading,
     getIsAddingFolder: (state) => state.isAddingFolder,
     getIsRemovingFolder: (state) => state.isRemovingFolder,
+    getIsUpdatingStatusTask: (state) => state.isUpdatingTaskStatus
   },
   extraReducers: (builder) => {
     builder
@@ -93,7 +99,9 @@ export const {
   addFolder,
   removeFolder,
   setIsRemovingFolder,
-  addTask
+  addTask,
+  setTaskStatus,
+  setIsUpdatingStatusTask,
 } = foldersSlice.actions;
 export const {
   getFoldersSelector,
@@ -101,4 +109,5 @@ export const {
   getCurrentFolderIdSelector,
   getIsAddingFolder,
   getIsRemovingFolder,
+  getIsUpdatingStatusTask
 } = foldersSlice.selectors;

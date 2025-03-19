@@ -66,18 +66,20 @@
 }
 
 /* Неактивный чекбокс - Стиль для иконки чекбокса при наведении  */
+/* Стили для иконки чекбокса в отключённом состоянии */
 .customCheckbox:not(:disabled):not(:checked)+label:hover .customCheckboxIcon::before,
-.customCheckbox:not(:disabled):not(:checked)+label:hover .customCheckboxIcon::after {
+.customCheckbox:not(:disabled):not(:checked)+label:hover .customCheckboxIcon::after,
+.customCheckbox:disabled+label .customCheckboxIcon::before,
+.customCheckbox:disabled+label .customCheckboxIcon::after {
   background-color: #B3B3B3;
   opacity: 1;
 }
 
-
 /* Отключённый чекбокс */
 .customCheckbox:disabled+label::before {
   background-color: var(--disabled-btn-color);
+  border-color: var(--disabled-btn-color);
 }
-
 
 /* Checkbox Icon */
 .customCheckboxIcon {

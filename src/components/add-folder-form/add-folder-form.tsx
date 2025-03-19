@@ -24,7 +24,7 @@ export const AddFolderForm: FC = () => {
         addFolderAsync({ folderName, folderColor })
       ).unwrap();
       setFolderName("");
-      navigate("/" + folderId);
+      navigate("/folders/" + folderId);
     } catch (err) {
       console.error(err);
     }

@@ -1,10 +1,21 @@
-import { FC } from "react";
+import { ChangeEvent, FC } from "react";
 
 import { TaskProps } from "./type";
 import { TaskUI } from "../ui/task";
 
-export const Task: FC<TaskProps> = ({ task }) => {
-  const { text } = task;
+export const Task: FC<TaskProps> = ({ task, isUpdatingTaskStatus, setTaskStatus }) => {
+  const checkUpdatingInProgress = (id: string) => 
+    isUpdatingTaskStatus.some((taskid) => taskid === id);
 
-  return <TaskUI text={text} />;
+  const setStatus = (evt: ChangeEvent<HTMLInputElement>) => {
+    setTaskStatus(task, evt.target.checked);
+  };
+
+  return (
+    <TaskUI 
+      task={task}
+      isUpdatingTaskStatus={checkUpdatingInProgress(task.id)}
+      setTaskStatus={setStatus}
+    />
+  );
 };

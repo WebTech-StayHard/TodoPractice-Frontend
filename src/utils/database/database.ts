@@ -53,6 +53,15 @@ class FakeDataBase {
 
     return newTask;
   };
+
+  updateTaskStatus = (id: string, status: boolean) => {
+    const index = this._tasks.findIndex((t) => t.id === id);
+
+    if (index !== -1) {
+      const updatedTask = {...this._tasks[index], status};
+      this._tasks[index] = updatedTask;
+    }
+  };
 }
 
 export const database = new FakeDataBase(initialFolders, initialTasks);

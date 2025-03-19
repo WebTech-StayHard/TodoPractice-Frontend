@@ -1,3 +1,8 @@
+import { ChangeEvent } from 'react';
+import { TTask } from '../../../utils/types';
+
 export type TaskUIProps = {
-  text: string;
+  task: TTask;
+  isUpdatingTaskStatus: boolean;
+  setTaskStatus: (e: ChangeEvent<HTMLInputElement>) => void;
 };
