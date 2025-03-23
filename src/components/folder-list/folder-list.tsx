@@ -3,13 +3,13 @@ import { useDispatch, useSelector } from "../../services/store/store";
 import {
   getCurrentFolderIdSelector,
   getFoldersSelector,
-  getIsLoadingSelector,
-  getIsRemovingFolder
+  getIsLoadingSelector
 } from "../../services/slices/foldersSlice";
 import { NavLink, useNavigate } from "react-router-dom";
 import { Folder } from '../folder/folder';
 import { FolderListUI } from '../ui/folder-list/folder-list';
 import { removeFolderAsync } from '../../services/thunks/foldersThunks';
+import { getIsRemovingFolder } from '../../services/slices/operationStatusSlice';
 
 export const FolderList: FC = () => {
   const dispatch = useDispatch();

@@ -1,26 +1,17 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { TFolder, TTask } from "../../utils/types";
-import { addFolderAsync, getFoldersAsync } from "../thunks/foldersThunks";
-import { toggleArrayItem } from '../../utils/helpers/arrayHelper';
+import { getFoldersAsync } from "../thunks/foldersThunks";
 
 type TFoldersState = {
   folders: TFolder[];
   currentFolderId: string | null;
   isLoading: boolean;
-
-  isAddingFolder: boolean;
-  isRemovingFolder: string[];
-  isUpdatingTaskStatus: string[];
 };
 
 const initialState: TFoldersState = {
   folders: [],
   currentFolderId: null,
   isLoading: false,
-
-  isAddingFolder: false,
-  isRemovingFolder: [],
-  isUpdatingTaskStatus: []
 };
 
 const foldersSlice = createSlice({
@@ -31,37 +22,41 @@ const foldersSlice = createSlice({
       state.currentFolderId = payload;
     },
     addFolder: (state, { payload }: PayloadAction<TFolder>) => {
-      state.folders.push(payload);
+      state.folders = [...state.folders, payload];
     },
     removeFolder: (state, { payload }: PayloadAction<string>) => {
       state.folders = state.folders.filter((f) => f.id !== payload);
-    },
-    setIsRemovingFolder: (state, { payload }: PayloadAction<string>) => {
-      state.isRemovingFolder = toggleArrayItem(state.isRemovingFolder, payload);
     },
     addTask: (state, { payload }: PayloadAction<TTask>) => {
       const folder = state.folders.find((f) => f.id === payload.folderid);
       folder?.tasks.push(payload);
     },
     setTaskStatus: (state, { payload }: PayloadAction<TTask>) => {
-      const folder = state.folders.find((f) => f.id === payload.folderid);
-      const task = folder?.tasks.find((t) => t.id === payload.id);
+      const task = findTask(state, payload.folderid, payload.id);
 
       if (task) {
         task.status = payload.status;
       }
     },
-    setIsUpdatingStatusTask: (state, { payload }: PayloadAction<string>) => {
-      state.isUpdatingTaskStatus = toggleArrayItem(state.isUpdatingTaskStatus, payload);
+    setTaskText: (state, { payload }: PayloadAction<TTask>) => {
+      const task = findTask(state, payload.folderid, payload.id);
+
+      if (task) {
+        task.text = payload.text;
+      }
+    },
+    setFolderTitle: (state, { payload }: PayloadAction<TFolder>) => {
+      const folder = state.folders.find((f) => f.id === payload.id);
+
+      if (folder) {
+        folder.title = payload.title
+      }
     }
   },
   selectors: {
     getFoldersSelector: (state) => state.folders,
     getCurrentFolderIdSelector: (state) => state.currentFolderId,
     getIsLoadingSelector: (state) => state.isLoading,
-    getIsAddingFolder: (state) => state.isAddingFolder,
-    getIsRemovingFolder: (state) => state.isRemovingFolder,
-    getIsUpdatingStatusTask: (state) => state.isUpdatingTaskStatus
   },
   extraReducers: (builder) => {
     builder
@@ -78,36 +73,27 @@ const foldersSlice = createSlice({
       )
       .addCase(getFoldersAsync.rejected, (state) => {
         state.isLoading = false;
-      })
-
-      // Adding Folder
-      .addCase(addFolderAsync.pending, (state) => {
-        state.isAddingFolder = true;
-      })
-      .addCase(addFolderAsync.fulfilled, (state) => {
-        state.isAddingFolder = false;
-      })
-      .addCase(addFolderAsync.rejected, (state) => {
-        state.isAddingFolder = false;
       });
   },
 });
+
+const findTask = (state: TFoldersState, taskId: string, folderId: string) => {
+  const folder = state.folders.find((f) => f.id === folderId);
+  return folder?.tasks.find((t) => t.id === taskId);
+};
 
 export const reducer = foldersSlice.reducer;
 export const {
   setCurrentFolder,
   addFolder,
   removeFolder,
-  setIsRemovingFolder,
   addTask,
   setTaskStatus,
-  setIsUpdatingStatusTask,
+  setTaskText,
+  setFolderTitle
 } = foldersSlice.actions;
 export const {
   getFoldersSelector,
   getIsLoadingSelector,
   getCurrentFolderIdSelector,
-  getIsAddingFolder,
-  getIsRemovingFolder,
-  getIsUpdatingStatusTask
 } = foldersSlice.selectors;

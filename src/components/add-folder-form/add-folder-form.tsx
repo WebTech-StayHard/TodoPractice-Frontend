@@ -4,8 +4,8 @@ import { colors } from "../../utils/constants";
 
 import { useDispatch, useSelector } from "../../services/store/store";
 import { useNavigate } from "react-router-dom";
-import { getIsAddingFolder } from "../../services/slices/foldersSlice";
 import { addFolderAsync } from "../../services/thunks/foldersThunks";
+import { getIsAddingFolder } from '../../services/slices/operationStatusSlice';
 
 export const AddFolderForm: FC = () => {
   const dispatch = useDispatch();

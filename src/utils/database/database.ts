@@ -4,14 +4,12 @@ import { initialFolders, initialTasks } from "../constants";
 import { TEntityFolder, TEntityTask } from "./types";
 
 class FakeDataBase {
-  _folders: TEntityFolder[];
-  _tasks: TEntityTask[];
+  constructor(
+    private _folders: TEntityFolder[],
+    private _tasks: TEntityTask[]
+  ) {}
 
-  constructor(folders: TEntityFolder[], tasks: TEntityTask[]) {
-    this._folders = folders;
-    this._tasks = tasks;
-  }
-
+  // Folders
   getFolders = () =>
     this._folders.map((folder) => ({
       ...folder,
@@ -29,7 +27,7 @@ class FakeDataBase {
 
     return {
       ...newFolder,
-      tasks: []
+      tasks: [],
     };
   };
 
@@ -37,6 +35,11 @@ class FakeDataBase {
     this._folders = this._folders.filter((f) => f.id !== id);
   };
 
+  updateFolderTitle = (id: string, title: string) => {
+    this.updateEntityProperty(this._folders, id, "title", title);
+  };
+
+  // Tasks
   deleteTasksByFolderId = (folderid: string) => {
     this._tasks = this._tasks.filter((t) => t.folderid !== folderid);
   };
@@ -55,12 +58,25 @@ class FakeDataBase {
   };
 
   updateTaskStatus = (id: string, status: boolean) => {
-    const index = this._tasks.findIndex((t) => t.id === id);
+    this.updateEntityProperty(this._tasks, id, "status", status);
+  };
 
-    if (index !== -1) {
-      const updatedTask = {...this._tasks[index], status};
-      this._tasks[index] = updatedTask;
-    }
+  updateTaskText = (id: string, text: string) => {
+    this.updateEntityProperty(this._tasks, id, "text", text);
+  };
+
+  private updateEntityProperty = <T extends { id: string }, K extends keyof T>(
+    entityArray: T[],
+    id: string,
+    property: K,
+    value: T[K]
+  ) => {
+    const index = entityArray.findIndex((e) => e.id === id);
+
+    if (index === -1) return;
+
+    const updatedEntity = { ...entityArray[index], [property]: value };
+    entityArray[index] = updatedEntity;
   };
 }
 

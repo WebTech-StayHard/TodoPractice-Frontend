@@ -49,6 +49,31 @@ class FakeAPI {
         });
       }, 500);
     });
+
+  updateTaskText = async (id: string, text: string): Promise<TServerResponse> =>
+    await new Promise((resolve) => {
+      setTimeout(() => {
+        db.updateTaskText(id, text);
+        resolve({
+          resultCode: 0,
+          messages: [],
+        });
+      }, 500);
+    });
+
+  updateFolderTitle = async (
+    id: string,
+    title: string
+  ): Promise<TServerResponse> =>
+    await new Promise((resolve) => {
+      setTimeout(() => {
+        db.updateFolderTitle(id, title);
+        resolve({
+          resultCode: 0,
+          messages: [],
+        });
+      }, 500);
+    });
 }
 
 export const fakeAPI = new FakeAPI();

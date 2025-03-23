@@ -1,9 +1,9 @@
 export const colors = [
-  "#C9D1D3", // gray
+  "#FF8E0D", // orange
   "#42B883", // green
   "#64C4ED", // blue
-  "#FFBBCC", // pink
-  "#B6E6BD", // lightgreen
+  "#FF8AA7", // pink
+  "#6CCC7B", // lightgreen
   "#C355F5", // purple
   "#09011A", // black
   "#FF6464", // red
@@ -23,7 +23,7 @@ export const initialFolders = [
   {
     id: "3",
     title: "Фильмы и сериалы",
-    color: "#FFBBCC",
+    color: "#FF8AA7",
   },
 ];
 

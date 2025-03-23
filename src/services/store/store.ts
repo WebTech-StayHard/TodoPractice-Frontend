@@ -1,6 +1,7 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { reducer as foldersReducer } from '../slices/foldersSlice';
 import { reducer as appReducer } from '../slices/appSlice';
+import { reducer as operationStatusReducer } from '../slices/operationStatusSlice';
 import {
   useDispatch as dispatchHook,
   useSelector as selectorHook,
@@ -9,7 +10,8 @@ import {
 
 const rootReducer = combineReducers({
   app: appReducer,
-  folders: foldersReducer
+  folders: foldersReducer,
+  operationStatus: operationStatusReducer
 });
 
 export const store = configureStore({
