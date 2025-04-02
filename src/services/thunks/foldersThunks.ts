@@ -50,7 +50,7 @@ export const updateFolderTitleAsync = createAsyncThunk<
 
   const res = await fakeAPI.updateFolderTitle(folder.id, data);
   if (res.resultCode === 0) {
-    dispatch(setFolderTitle(folder));
+    dispatch(setFolderTitle({...folder, title: data}));
   }
 
   dispatch(setIsUpdatingFolderTitle(folder.id));

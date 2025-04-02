@@ -25,19 +25,26 @@
   margin-bottom: 1.5rem;
 }
 
-.editBtn {
+.btn {
   border-radius: 50%;
-  background-color: var(--theme-secondary-color);
   width: 2rem;
   height: 2rem;
   transition: all 0.2s linear;
+}
+
+.btn__icon {
+  min-width: 1rem;
+  min-height: 1rem;
+}
+
+.editBtn {
+  background-color: var(--theme-secondary-color);
 }
 
 .editBtn:hover {
   background-color: var(--theme-primary-color);
 }
 
-.editBtn__icon {
-  min-width: 1rem;
-  min-height: 1rem;
+.stopEditBtn {
+  background-color: var(--orange-color);
 }

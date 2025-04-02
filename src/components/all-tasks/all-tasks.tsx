@@ -12,6 +12,7 @@ import { FolderTasks } from "@components/folder-tasks";
 export const AllTasks: FC = () => {
   const folders = useSelector(getFoldersSelector);
   const isLoading = useSelector(getIsLoadingSelector);
+  console.log(folders);
 
   const elements = folders.map((folder) => (
     <FolderTasks key={folder.id} folder={folder} />

@@ -5,6 +5,7 @@ export type FolderTasksUIProps = {
   taskElements: ReactNode[];
   folder: TFolder;
   editTitle: boolean;
-  setEditTitle: () => void;
+  activeEditTitleMode: () => void;
+  disableEditTitleMode: () => void;
   setFolderTitle: (title: string) => void;
 }

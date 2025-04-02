@@ -23,7 +23,8 @@ export const FolderTasks: FC<FolderTasksProps> = ({ folder }) => {
     dispatch(updateFolderTitleAsync({ folder, data: title }));
   };
 
-  const setEditTitleMode = () => setEditTitle((p) => !p);
+  const activeEditTitleMode = () => setEditTitle(true);
+  const disableEditTitleMode = () => setEditTitle(false);
 
   const taskElements = folder.tasks.map((t) => (
     <Task
@@ -39,7 +40,8 @@ export const FolderTasks: FC<FolderTasksProps> = ({ folder }) => {
       folder={folder}
       taskElements={taskElements}
       editTitle={editTitle}
-      setEditTitle={setEditTitleMode}
+      activeEditTitleMode={activeEditTitleMode}
+      disableEditTitleMode={disableEditTitleMode}
       setFolderTitle={setFolderTitle}
     />
   );

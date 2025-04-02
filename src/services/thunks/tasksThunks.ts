@@ -21,10 +21,10 @@ export const updateTaskStatusAsync = createAsyncThunk<void, TUpdateTaskPayload<b
   UPDATE_TASK_STATUS,
   async ({task, data}, { dispatch }) => {
     dispatch(setIsUpdatingTaskStatus(task.id));
-
+    console.log(data);
     const res = await fakeAPI.updateTaskStatus(task.id, data);
     if (res.resultCode === 0) {
-      dispatch(setTaskStatus(task))
+      dispatch(setTaskStatus({...task, status: data}))
     }
 
     dispatch(setIsUpdatingTaskStatus(task.id));
@@ -38,7 +38,7 @@ export const updateTaskTextAsync = createAsyncThunk<void, TUpdateTaskPayload<str
 
     const res = await fakeAPI.updateTaskText(task.id, data);
     if (res.resultCode === 0) {
-      dispatch(setTaskText(task));
+      dispatch(setTaskText({...task, text: data}));
     }
 
     dispatch(setIsUpdatingTaskText(task.id));
