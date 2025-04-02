@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { CheckBoxUI } from "../../ui/form-elements";
+import { CheckBoxUI } from "@ui/forms/form-elements";
 import { CheckBoxProps } from "./type";
 
 export const CheckBox: FC<CheckBoxProps> = ({ id, disabled, onChange }) => (

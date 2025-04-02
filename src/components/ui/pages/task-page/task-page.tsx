@@ -1,9 +1,9 @@
 import { FC } from "react";
 import s from "./task-page.module.css";
 import { Outlet } from "react-router-dom";
-import { Title } from "../../../common/title";
+import { Title } from "@components/common/title";
 import { TaskPageUIProps } from "./type";
-import { SEO } from '../../../SEO';
+import { SEO } from '@components/SEO';
 
 export const TaskPageUI: FC<TaskPageUIProps> = ({ isEmpty }) => (
   <>

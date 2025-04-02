@@ -1,13 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { FC } from "react";
-import { AllTasksUI } from "../ui/all-tasks";
-import { useSelector } from "../../services/store/store";
+import { AllTasksUI } from "@ui/all-tasks";
+import { useSelector } from "@store";
 import {
   getFoldersSelector,
   getIsLoadingSelector,
-} from "../../services/slices/foldersSlice";
-import { Loader } from "../common/loader";
-import { FolderTasks } from "../folder-tasks/folder-tasks";
+} from "@slices/foldersSlice";
+import { Loader } from "@components/common/loader";
+import { FolderTasks } from "@components/folder-tasks";
 
 export const AllTasks: FC = () => {
   const folders = useSelector(getFoldersSelector);

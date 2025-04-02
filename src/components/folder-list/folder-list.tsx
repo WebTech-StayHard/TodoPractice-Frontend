@@ -1,15 +1,15 @@
 import { FC } from "react";
-import { useDispatch, useSelector } from "../../services/store/store";
+import { useDispatch, useSelector } from "@store";
 import {
   getCurrentFolderIdSelector,
   getFoldersSelector,
   getIsLoadingSelector
-} from "../../services/slices/foldersSlice";
+} from "@slices/foldersSlice";
 import { NavLink, useNavigate } from "react-router-dom";
-import { Folder } from '../folder/folder';
-import { FolderListUI } from '../ui/folder-list/folder-list';
-import { removeFolderAsync } from '../../services/thunks/foldersThunks';
-import { getIsRemovingFolder } from '../../services/slices/operationStatusSlice';
+import { Folder } from '@components/folder/folder';
+import { FolderListUI } from '@ui/folder-list/folder-list';
+import { removeFolderAsync } from '@thunks/foldersThunks';
+import { getIsRemovingFolder } from '@slices/operationStatusSlice';
 
 export const FolderList: FC = () => {
   const dispatch = useDispatch();

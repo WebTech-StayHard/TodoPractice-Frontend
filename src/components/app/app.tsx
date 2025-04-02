@@ -3,16 +3,17 @@ import { Routes, Route } from "react-router-dom";
 import { FC, useEffect } from "react";
 
 import s from "./app.module.css";
-import { Sidebar } from '../sidebar/sidebar';
-import { TaskPage } from '../../pages/task-page';
-import { AllTasks } from '../all-tasks';
-import { NotFound } from '../not-found';
-import { FolderTasksContainer } from '../folder-tasks/folder-tasks-container';
-import { useDispatch, useSelector } from '../../services/store/store';
-import { getIsInitializedSelector } from '../../services/slices/appSlice';
-import { initialize } from '../../services/thunks/appThunk';
-import { AppPreloader } from '../app-preloader';
-import { HomePage } from '../../pages/home-page';
+import { Sidebar } from '@components/sidebar';
+import { AllTasks } from '@components/all-tasks';
+import { NotFound } from '@components/not-found';
+import { FolderTasksContainer } from '@components/folder-tasks/folder-tasks-container';
+import { useDispatch, useSelector } from '@store';
+import { getIsInitializedSelector } from '@slices/appSlice';
+import { initialize } from '@thunks/appThunk';
+import { AppPreloader } from '@components/app-preloader';
+
+import { HomePage } from '@pages/home-page';
+import { TaskPage } from '@pages/task-page';
 
 const App: FC = () => {
   const dispatch = useDispatch();

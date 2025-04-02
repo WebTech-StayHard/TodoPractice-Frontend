@@ -1,12 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { TFolder, TTask } from "../../utils/types";
-import { getFoldersAsync } from "../thunks/foldersThunks";
-
-type TFoldersState = {
-  folders: TFolder[];
-  currentFolderId: string | null;
-  isLoading: boolean;
-};
+import { TFolder, TTask } from "@utils/types";
+import { getFoldersAsync } from "@thunks/foldersThunks";
+import { TFoldersState } from './types/types';
 
 const initialState: TFoldersState = {
   folders: [],

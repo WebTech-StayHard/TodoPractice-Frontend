@@ -1,7 +1,7 @@
 import { FC } from "react";
 
 import { OptionColorProps } from "./type";
-import { OptionColorUI } from "../../ui/form-elements";
+import { OptionColorUI } from "@ui/forms/form-elements";
 
 export const OptionColor: FC<OptionColorProps> = (props) => {
   const { radioId, name, color, selected, onChange } = props;

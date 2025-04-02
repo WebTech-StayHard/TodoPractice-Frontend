@@ -2,12 +2,12 @@
 import { FC, useEffect } from "react";
 
 import { useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "../../services/store/store";
-import { getIsLoadingSelector, setCurrentFolder } from "../../services/slices/foldersSlice";
-import { getCurrentFolderSelector } from "../../services/selectors/foldersSelectors";
-import { Loader } from "../common/loader";
-import { FolderTasks } from "./folder-tasks";
-import { NotFound } from '../not-found';
+import { useDispatch, useSelector } from "@store";
+import { getIsLoadingSelector, setCurrentFolder } from "@slices/foldersSlice";
+import { getCurrentFolderSelector } from "@selectors/foldersSelectors";
+import { Loader } from "@components/common/loader";
+import { FolderTasks } from "@components/folder-tasks";
+import { NotFound } from '@components/not-found';
 
 export const FolderTasksContainer: FC = () => {
   const dispatch = useDispatch();

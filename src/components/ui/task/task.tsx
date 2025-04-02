@@ -2,7 +2,7 @@ import { FC } from "react";
 
 import s from "./task.module.css";
 import { TaskUIProps } from "./type";
-import { CheckBox } from "../../form-elements/checkbox";
+import { CheckBox } from "@components/forms/form-elements";
 
 export const TaskUI: FC<TaskUIProps> = ({
   task,

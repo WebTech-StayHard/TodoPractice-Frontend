@@ -1,7 +1,7 @@
 import { ChangeEvent, FC } from "react";
 
 import { TaskProps } from "./type";
-import { TaskUI } from "../ui/task";
+import { TaskUI } from "@ui/task";
 
 export const Task: FC<TaskProps> = ({ task, isUpdatingTaskStatus, setTaskStatus }) => {
   const checkUpdatingInProgress = (id: string) => 

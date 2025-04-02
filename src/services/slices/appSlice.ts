@@ -1,11 +1,6 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { TFolder } from "../../utils/types";
-import { getFoldersAsync } from "../thunks/foldersThunks";
-import { initialize } from "../thunks/appThunk";
-
-type TAppState = {
-  isInitialized: boolean;
-};
+import { createSlice } from "@reduxjs/toolkit";
+import { getFoldersAsync } from "@thunks/foldersThunks";
+import { TAppState } from './types/types';
 
 const initialState: TAppState = {
   isInitialized: false,

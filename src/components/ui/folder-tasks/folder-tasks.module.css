@@ -1,3 +1,9 @@
+.titleContainer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
 .separator {
   margin: 1.5rem 0 2rem;
 }
@@ -17,4 +23,21 @@
   flex-direction: column;
   gap: 1.5rem;
   margin-bottom: 1.5rem;
+}
+
+.editBtn {
+  border-radius: 50%;
+  background-color: var(--theme-secondary-color);
+  width: 2rem;
+  height: 2rem;
+  transition: all 0.2s linear;
+}
+
+.editBtn:hover {
+  background-color: var(--theme-primary-color);
+}
+
+.editBtn__icon {
+  min-width: 1rem;
+  min-height: 1rem;
 }

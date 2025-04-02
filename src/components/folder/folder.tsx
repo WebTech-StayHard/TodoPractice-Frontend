@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { FolderProps } from './type';
-import { FolderUI } from '../ui/folder';
+import { FolderUI } from '@ui/folder';
 
 export const Folder: FC<FolderProps> = ({folder, isActive, isRemoving, handleRemove}) => {
   const {id, title, color} = folder;

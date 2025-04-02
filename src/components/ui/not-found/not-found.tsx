@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom";
-import { Button } from "../../common/buttons";
+import { Button } from "@components/common/buttons";
 import s from "./not-found.module.css";
 import { FC } from "react";
 import { NotFoundUIProps } from "./type";
-import { SEO } from "../../SEO";
+import { SEO } from "@components/SEO";
 
 export const NotFoundUI: FC<NotFoundUIProps> = ({ title }) => {
   const navigate = useNavigate();

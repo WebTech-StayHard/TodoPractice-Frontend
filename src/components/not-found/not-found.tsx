@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { NotFoundUI } from "../ui/not-found";
+import { NotFoundUI } from "@ui/not-found";
 import { NotFoundProps } from "./type";
 
 export const NotFound: FC<NotFoundProps> = ({

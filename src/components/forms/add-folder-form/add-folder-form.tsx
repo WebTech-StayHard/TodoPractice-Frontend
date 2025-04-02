@@ -1,11 +1,11 @@
 import { FC, FormEvent, useState } from "react";
-import { AddFolderFormUI } from "../ui/add-folder-form";
-import { colors } from "../../utils/constants";
+import { colors } from "@utils/constants";
 
-import { useDispatch, useSelector } from "../../services/store/store";
+import { useDispatch, useSelector } from "@store";
 import { useNavigate } from "react-router-dom";
-import { addFolderAsync } from "../../services/thunks/foldersThunks";
-import { getIsAddingFolder } from '../../services/slices/operationStatusSlice';
+import { addFolderAsync } from "@thunks/foldersThunks";
+import { getIsAddingFolder } from '@slices/operationStatusSlice';
+import { AddFolderFormUI } from '@ui/forms/add-folder-form';
 
 export const AddFolderForm: FC = () => {
   const dispatch = useDispatch();

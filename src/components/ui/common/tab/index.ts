@@ -1,1 +1,1 @@
-export { Tab, TabContainer } from './tab';
+export { TabUI, TabContainerUI } from './tab';

@@ -1,17 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { toggleArrayItem } from "../../utils/helpers/arrayHelper";
-import { addFolderAsync } from "../thunks/foldersThunks";
+import { toggleArrayItem } from "@utils/helpers/arrayHelper";
+import { addFolderAsync } from "@thunks/foldersThunks";
+import { TOperationStatusState } from './types/types';
 
-type TInitialState = {
-  isAddingFolder: boolean;
-  isRemovingFolder: string[];
-
-  isUpdatingTaskStatus: string[];
-  isUpdatingTaskText: string[];
-  isUpdatingFolderTitle: string[];
-};
-
-const initialState: TInitialState = {
+const initialState: TOperationStatusState = {
   isAddingFolder: false,
   isRemovingFolder: [],
 

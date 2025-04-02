@@ -1,16 +1,16 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { TTask } from '../../utils/types';
-import { fakeAPI } from '../../api/fake-api';
-import { addTask, setTaskStatus, setTaskText } from '../slices/foldersSlice';
-import { setIsUpdatingTaskStatus, setIsUpdatingTaskText } from '../slices/operationStatusSlice';
+import { TTask } from '@utils/types';
+import { fakeAPI } from '@api';
+import { addTask, setTaskStatus, setTaskText } from '@slices/foldersSlice';
+import { setIsUpdatingTaskStatus, setIsUpdatingTaskText } from '@slices/operationStatusSlice';
+import { TUpdateTaskPayload } from './types/types';
 
-type TUpdateTaskPayload<T> = {
-  task: TTask;
-  data: T;
-}
+const ADD_TASK = 'tasks/addTask';
+const UPDATE_TASK_STATUS = 'tasks/updateTaskStatus';
+const UPDATE_TASK_TEXT = 'tasks/updateTaskText';
 
 export const addTaskAsync = createAsyncThunk<void, Pick<TTask, 'folderid' | 'text'>>(
-  "tasks/addTask",
+  ADD_TASK,
   async ({folderid, text}, { dispatch }) => {
     const task = await fakeAPI.addTask(folderid, text);
     dispatch(addTask(task));
@@ -18,7 +18,7 @@ export const addTaskAsync = createAsyncThunk<void, Pick<TTask, 'folderid' | 'tex
 );
 
 export const updateTaskStatusAsync = createAsyncThunk<void, TUpdateTaskPayload<boolean>>(
-  "tasks/updateTaskStatus",
+  UPDATE_TASK_STATUS,
   async ({task, data}, { dispatch }) => {
     dispatch(setIsUpdatingTaskStatus(task.id));
 
@@ -32,7 +32,7 @@ export const updateTaskStatusAsync = createAsyncThunk<void, TUpdateTaskPayload<b
 );
 
 export const updateTaskTextAsync = createAsyncThunk<void, TUpdateTaskPayload<string>>(
-  "tasks/updateTaskText",
+  UPDATE_TASK_TEXT,
   async ({task, data}, { dispatch }) => {
     dispatch(setIsUpdatingTaskText(task.id));
 

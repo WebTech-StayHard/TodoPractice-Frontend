@@ -1,23 +1,29 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { fakeAPI } from "../../api/fake-api";
+import { fakeAPI } from "@api";
 import {
   addFolder,
   removeFolder,
   setFolderTitle,
-} from "../slices/foldersSlice";
-import { TFolder } from "../../utils/types";
+} from "@slices/foldersSlice";
+
 import {
   setIsRemovingFolder,
   setIsUpdatingFolderTitle,
-} from "../slices/operationStatusSlice";
+} from "@slices/operationStatusSlice";
+import { AddFolderPayload, TUpdateFolderPayload } from './types/types';
+
+const GET_FOLDERS = 'folders/getFolders';
+const REMOVE_FOLDER = 'folders/removeFolder';
+const ADD_FOLDER = 'folders/addFolder';
+const UPDATE_FOLDER_TITLE = 'folders/updateFolderTitle';
 
 export const getFoldersAsync = createAsyncThunk(
-  "folders/getFolders",
+  GET_FOLDERS,
   async () => await fakeAPI.getFolders()
 );
 
 export const removeFolderAsync = createAsyncThunk(
-  "folders/removeFolder",
+  REMOVE_FOLDER,
   async (id: string, { dispatch }) => {
     dispatch(setIsRemovingFolder(id));
 
@@ -27,13 +33,8 @@ export const removeFolderAsync = createAsyncThunk(
   }
 );
 
-type AddFolderPayload = {
-  folderName: string;
-  folderColor: string;
-};
-
 export const addFolderAsync = createAsyncThunk<string, AddFolderPayload>(
-  "folders/addFolder",
+  ADD_FOLDER,
   async ({ folderName, folderColor }, { dispatch }) => {
     const folder = await fakeAPI.addFolder(folderName, folderColor);
     dispatch(addFolder(folder));
@@ -41,15 +42,10 @@ export const addFolderAsync = createAsyncThunk<string, AddFolderPayload>(
   }
 );
 
-type TUpdateFolderPayload<T> = {
-  folder: TFolder;
-  data: T;
-};
-
 export const updateFolderTitleAsync = createAsyncThunk<
   void,
   TUpdateFolderPayload<string>
->("tasks/updateFolderTitle", async ({ folder, data }, { dispatch }) => {
+>(UPDATE_FOLDER_TITLE, async ({ folder, data }, { dispatch }) => {
   dispatch(setIsUpdatingFolderTitle(folder.id));
 
   const res = await fakeAPI.updateFolderTitle(folder.id, data);

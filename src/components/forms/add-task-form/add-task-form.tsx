@@ -1,7 +1,7 @@
 import { ChangeEvent, FC, FormEvent, useState } from "react";
-import { AddTaskFormUI } from "../ui/add-task-form";
-import { useDispatch } from "../../services/store/store";
-import { addTaskAsync } from "../../services/thunks/tasksThunks";
+import { AddTaskFormUI } from "@ui/forms/add-task-form";
+import { useDispatch } from "@store";
+import { addTaskAsync } from "@thunks/tasksThunks";
 import { AddTaskFormProps } from './type';
 
 export const AddTaskForm: FC<AddTaskFormProps> = ({ folderid }) => {

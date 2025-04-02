@@ -1,6 +1,6 @@
 import { FC } from "react";
 import s from "./home-page.module.css";
-import { SEO } from "../../../SEO";
+import { SEO } from "@components/SEO";
 
 export const HomePageUI: FC = () => (
   <>

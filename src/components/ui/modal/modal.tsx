@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { ModalPropsUI } from "./type";
 import s from "./modal.module.css";
-import { Button } from '../../common/buttons';
+import { Button } from '@components/common/buttons';
 
 export const ModalUI: FC<ModalPropsUI> = ({ children, position, onClose }) => (
   <div className={s.modal} style={{...position}}>

@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { RadioGroupUIProps } from "./type";
 import s from "./radio-group.module.css";
-import { OptionColor } from "../../../form-elements/option-color";
+import { OptionColor } from "@components/forms/form-elements";
 
 export const RadioGroupUI: FC<RadioGroupUIProps> = (props) => {
   const { title, name, selected, options, onChange } = props;

@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { ModalUI } from "../ui/modal";
+import { ModalUI } from "@ui/modal";
 import { ModalProps } from "./type";
 
 export const Modal: FC<ModalProps> = ({ children, position, onClose }) => {

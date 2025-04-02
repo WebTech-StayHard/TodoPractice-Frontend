@@ -1,11 +1,11 @@
 import { FC } from "react";
 import { AddTaskFormUIProps } from "./type";
-import { Button } from "../../common/buttons";
+import { Button } from "@components/common/buttons";
 
 import s from "./add-task-form.module.css";
 import clsx from "clsx";
 
-import plusIcon from "../../../assets/images/plus-white.svg";
+import plusIcon from "@images/plus-white.svg";
 
 export const AddTaskFormUI: FC<AddTaskFormUIProps> = ({
   isFormShow,

@@ -1,8 +1,8 @@
-import { FC } from "react";
-import { Button } from "../../common/buttons";
-import { AddFolderFormUIProps } from "./type";
-import s from "./add-folder-form.module.css";
-import { RadioGroup } from "../../form-elements";
+import { FC } from 'react';
+import { RadioGroup } from '@components/forms/form-elements';
+import { Button } from '@components/common/buttons';
+import { AddFolderFormUIProps } from './type';
+import s from './add-folder-form.module.css';
 
 export const AddFolderFormUI: FC<AddFolderFormUIProps> = ({
   isAddingFolder,

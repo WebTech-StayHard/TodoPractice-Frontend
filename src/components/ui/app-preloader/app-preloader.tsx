@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Loader } from "../../common/loader";
+import { Loader } from "@components/common/loader";
 import s from "./app-preloader.module.css";
 
 export const AppPreloaderUI: FC = () => (

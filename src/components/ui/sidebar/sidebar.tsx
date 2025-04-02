@@ -1,15 +1,15 @@
 import { FC } from "react";
 
 import { SidebarProps } from "./type";
-import { Tab, TabContainer } from "../common/tab";
-import { FolderList } from "../../folder-list";
+import { Tab, TabContainer } from "@components/common/tab";
+import { FolderList } from "@components/folder-list";
 
 import s from "./sidebar.module.css";
-import listIcon from "../../../assets/images/list.svg";
-import plusIcon from "../../../assets/images/plus.svg";
+import listIcon from "@images/list.svg";
+import plusIcon from "@images/plus.svg";
 import { NavLink } from "react-router-dom";
-import { Modal } from "../../modal";
-import { AddFolderForm } from "../../add-folder-form";
+import { Modal } from "@components/modal";
+import { AddFolderForm } from "@components/forms/add-folder-form";
 
 export const SidebarUI: FC<SidebarProps> = ({
   addFolderTabRef,

@@ -1,11 +1,11 @@
 import { FC } from 'react';
 
-import { Tab, TabContainer } from '../common/tab';
-import { FolderMark } from '../../folder-mark';
-import { Button } from '../../common/buttons/button';
+import { Tab, TabContainer } from '@components/common/tab';
+import { FolderMark } from '@components/folder-mark';
+import { Button } from '@components/common/buttons';
 
 import s from './folder.module.css';
-import crossIcon from '../../../assets/images/cross.svg';
+import crossIcon from '@images/cross.svg';
 import { FolderUIProps } from './type';
 
 export const FolderUI: FC<FolderUIProps> = ({title, color, isActive, disabled, onClick}) => {

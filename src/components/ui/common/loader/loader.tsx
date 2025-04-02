@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import s from './loader.module.css';
-import loader from '../../../../assets/images/loader.svg';
+import loader from '@images/loader.svg';
 import { LoaderUIProps } from './type';
 
 export const LoaderUI: FC<LoaderUIProps> = ({customLoader, className}) => {
