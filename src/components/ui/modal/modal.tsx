@@ -8,7 +8,7 @@ export const ModalUI: FC<ModalPropsUI> = ({ children, position, onClose }) => (
     <div className={s.content}>
       {children}
     </div>
-    <Button 
+    <Button
       className={s.closeBtn}
       onClick={onClose}
     />

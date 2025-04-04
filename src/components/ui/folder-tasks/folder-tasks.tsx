@@ -7,10 +7,6 @@ import { AddTaskForm } from "@components/forms/add-task-form";
 import { Button } from "@components/common/buttons";
 import { EditFolderTitleForm } from "@components/forms/edit-folder-title-form";
 
-import editPenIcon from "@images/edit-pen.svg";
-import crossIcon from "@images/cross.svg";
-import clsx from 'clsx';
-
 export const FolderTasksUI: FC<FolderTasksUIProps> = ({
   taskElements,
   folder,
@@ -21,30 +17,21 @@ export const FolderTasksUI: FC<FolderTasksUIProps> = ({
   <section className={s.folderTasksContainer}>
     <div className={s.titleContainer}>
       {!editTitle ? (
-        <Title className={s.folderTasksContainer__title} color={folder?.color}>
-          <span>{folder?.title}</span>
+        <Title className={s.title} color={folder?.color}>
+          {folder?.title}
         </Title>
       ) : (
         <EditFolderTitleForm
           folder={folder}
-          onSubmit={disableEditTitleMode}
+          onUpdateComplete={disableEditTitleMode}
         />
       )}
-      {!editTitle ? (
+      <div className={s.editTitle}>
         <Button
-          extraClass={clsx(s.btn, s.editBtn)}
-          onClick={activeEditTitleMode}
-        >
-          <img className={s.btn__icon} src={editPenIcon} alt="edit-pen" />
-        </Button>
-      ) : (
-        <Button
-          extraClass={clsx(s.btn, s.stopEditBtn)}
-          onClick={disableEditTitleMode}
-        >
-          <img className={s.btn__icon} src={crossIcon} alt="cross-icon" />
-        </Button>
-      )}
+          type={editTitle ? "cross" : "edit"}
+          onClick={editTitle ? disableEditTitleMode : activeEditTitleMode}
+        />
+      </div>
     </div>
 
     <Separator className={s.separator} />

@@ -10,13 +10,11 @@ export const TaskUI: FC<TaskUIProps> = ({
   setTaskStatus,
 }) => (
   <article className={s.task}>
-    <CheckBox 
+    <CheckBox
       id={task.id}
       disabled={isUpdatingTaskStatus}
       onChange={setTaskStatus}
     />
-    <span>
-      {task.text}
-    </span>
+    <span className={s.text}>{task.text}</span>
   </article>
 );

@@ -21,6 +21,7 @@ export const AddTaskForm: FC<AddTaskFormProps> = ({ folderid }) => {
           text: taskText,
         })
       );
+      setTaskText("");
       setIsFormShow(false);
     } catch (err) {
       console.log(err);

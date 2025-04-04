@@ -5,3 +5,6 @@ export const toggleArrayItem = <T>(array: T[], item: T): T[] => {
     return [...array, item];
   }
 };
+
+export const checkInProgress = (array: string[], id: string) =>
+  array.some((e) => e === id);

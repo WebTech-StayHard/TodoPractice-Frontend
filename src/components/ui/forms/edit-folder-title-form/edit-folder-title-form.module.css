@@ -2,6 +2,7 @@
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  width: 50%;
 }
 
 .input {
@@ -11,14 +12,5 @@
   color: var(--primary-color);
   font-size: 1.25rem;
   font-weight: 500;
-}
-
-.btnSubmit {
-  background-color: var(--success-color);
-  border-radius: 50%;
-  padding: 0.25rem;
-}
-
-.btnSubmit:disabled {
-  background-color: var(--disabled-btn-color);
+  width: 100%;
 }

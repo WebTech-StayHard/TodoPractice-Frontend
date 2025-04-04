@@ -1,3 +1,3 @@
 export type FolderMarkProps = {
-  backgroundColor?: string;
+  color?: string;
 };

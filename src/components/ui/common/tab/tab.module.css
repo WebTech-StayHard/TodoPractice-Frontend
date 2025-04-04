@@ -8,10 +8,6 @@
   padding: 0.5rem;
   border-radius: 0.25rem;
 
-  font-size: 1.1rem;
-  font-weight: 500;
-  user-select: none;
-
   transition: all 0.15s linear;
 }
 
@@ -27,6 +23,7 @@
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  overflow: hidden;
 }
 
 /* Active */
@@ -41,4 +38,12 @@
 
 .tabContainer.active:active {
   opacity: 1;
+}
+
+.text {
+  font-size: 1.1rem;
+  font-weight: 500;
+  user-select: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

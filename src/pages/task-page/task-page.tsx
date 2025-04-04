@@ -1,7 +1,7 @@
 import { FC } from "react";
-import { TaskPageUI } from "../../components/ui/pages";
-import { getFoldersSelector } from "../../services/slices/foldersSlice";
-import { useSelector } from "../../services/store/store";
+import { TaskPageUI } from "@ui/pages";
+import { getFoldersSelector } from "@slices/foldersSlice";
+import { useSelector } from "@store";
 
 export const TaskPage: FC = () => {
   const folders = useSelector(getFoldersSelector);

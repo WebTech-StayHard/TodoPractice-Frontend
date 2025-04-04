@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { FolderProps } from './type';
 import { FolderUI } from '@ui/folder';
+import { checkInProgress } from '@utils/helpers/arrayHelper';
 
 export const Folder: FC<FolderProps> = ({folder, isActive, isRemoving, handleRemove}) => {
   const {id, title, color} = folder;
@@ -11,15 +12,12 @@ export const Folder: FC<FolderProps> = ({folder, isActive, isRemoving, handleRem
     handleRemove(id);
   };
 
-  const checkRemovingInProgress = () => 
-    isRemoving.some((folderid) => folderid === id);
-
   return (
     <FolderUI 
       title={title}
       color={color}
       isActive={isActive}
-      disabled={checkRemovingInProgress()}
+      disabled={checkInProgress(isRemoving, id)}
       onClick={removeFolder}
     />
   );

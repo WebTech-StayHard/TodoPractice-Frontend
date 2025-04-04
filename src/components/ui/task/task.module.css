@@ -5,4 +5,11 @@
 
   font-size: 1.35rem;
   font-weight: 500;
+  max-width: 80%;
+}
+
+.text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
 }

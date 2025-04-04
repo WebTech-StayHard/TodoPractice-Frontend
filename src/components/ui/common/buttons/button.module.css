@@ -3,7 +3,6 @@
   justify-content: center;
   align-items: center;
   transition: all 0.25s linear;
-  padding: 0.5rem 1rem;
   border-radius: 0.25rem;
 }
 
@@ -13,4 +12,89 @@
 
 .button:active {
   opacity: 0.7
+}
+
+.button__small {
+  padding: 0.25rem 0.75rem;
+}
+
+.button__medium {
+  padding: 0.5rem 1rem;
+}
+
+.button__large {
+  padding: 0.75rem 1.25rem;
+}
+
+
+/* Btn with icon */
+.btnWithIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  transition: all 0.2s linear;
+}
+
+.btnWithIcon__small {
+  padding: 0.5rem;
+}
+
+.btnWithIcon__medium {
+  padding: 0.75rem;
+}
+
+.btnWithIcon__large {
+  padding: 1rem;
+}
+
+.btnWithIcon:not(:disabled):hover {
+  transform: scale(1.1);
+}
+
+.btnWithIcon:not(:disabled):active {
+  opacity: 0.8;
+}
+
+.btnWithIcon:disabled {
+  background-color: var(--disabled-btn-color);
+}
+
+/* Icon */
+.icon__small {
+  min-width: 0.75rem;
+  min-height: 0.75rem;
+}
+
+.icon__medium {
+  width: 1rem;
+  height: 1rem;
+}
+
+.icon__large {
+  min-width: 1.75rem;
+  min-height: 1.75rem;
+}
+
+/* Edit */
+.edit {
+  background-color: var(--theme-secondary-color);
+}
+
+.edit:not(:disabled):hover {
+  background-color: var(--theme-primary-color);
+}
+
+/* Cross */
+.cross {
+  background-color: var(--orange-color);
+}
+
+.cross:not(:disabled):hover {
+  background-color: var(--lighten-orange-color);
+}
+
+/* Done */
+.done {
+  background-color: var(--success-color);
 }

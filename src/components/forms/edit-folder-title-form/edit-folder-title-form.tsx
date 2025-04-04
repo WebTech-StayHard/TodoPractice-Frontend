@@ -1,17 +1,19 @@
-import { EditFolderTitleFormUI } from "@components/ui/forms/edit-folder-title-form";
+import { EditFolderTitleFormUI } from "@ui/forms/edit-folder-title-form";
 import { useDispatch, useSelector } from "@store";
 import { ChangeEvent, FC, FormEvent, useState } from "react";
 import { EditFolderTitleFormProps } from "./type";
 import { updateFolderTitleAsync } from '@thunks/foldersThunks';
 import { getIsUpdatingFolderTitle } from '@slices/operationStatusSlice';
+import { checkInProgress } from '@utils/helpers/arrayHelper';
 
 export const EditFolderTitleForm: FC<EditFolderTitleFormProps> = ({
   folder,
-  onSubmit,
+  onUpdateComplete,
 }) => {
   const dispatch = useDispatch();
   const isUpdating = useSelector(getIsUpdatingFolderTitle);
   const [folderTitle, setFolderTitle] = useState(folder.title);
+  const isError = folderTitle === folder.title;
 
   const handleSubmit = async (evt: FormEvent) => {
     evt.preventDefault();
@@ -25,14 +27,11 @@ export const EditFolderTitleForm: FC<EditFolderTitleFormProps> = ({
           data: folderTitle,
         })
       );
-      onSubmit();
+      onUpdateComplete();
     } catch (err) {
       console.log(err);
     }
   };
-
-  const checkUpdatingInProgress = () => 
-    isUpdating.some((folderid) => folderid === folder.id);
 
   const onFolderTitleChange = (evt: ChangeEvent<HTMLInputElement>) => {
     setFolderTitle(evt.target.value);
@@ -41,7 +40,8 @@ export const EditFolderTitleForm: FC<EditFolderTitleFormProps> = ({
   return (
     <EditFolderTitleFormUI
       folderTitle={folderTitle}
-      isUpdate={checkUpdatingInProgress()}
+      isUpdate={checkInProgress(isUpdating, folder.id)}
+      isError={isError}
       onFolderTitleChange={onFolderTitleChange}
       handleSubmit={handleSubmit}
     />

@@ -30,15 +30,19 @@ export const AddTaskFormUI: FC<AddTaskFormUIProps> = ({
         placeholder="Текст задачи"
         value={taskText}
         onChange={onTaskTextChange}
+        maxLength={128}
         required
       />
       <div className={s.taskBtnContainer}>
-        <Button extraClass={clsx(s.taskBtn, s.taskSubmitBtn)}>
-          Добавить задачу
-        </Button>
-        <Button extraClass={clsx(s.taskBtn, s.taskCancelBtn)} onClick={hideForm}>
-          Отмена
-        </Button>
+        <Button 
+          children='Добавить задачу'
+          extraClass={clsx(s.taskBtn, s.taskSubmitBtn)}
+        />
+        <Button 
+          children='Отмена'
+          extraClass={clsx(s.taskBtn, s.taskCancelBtn)} 
+          onClick={hideForm}
+        />
       </div>
     </form>
   );

@@ -1,21 +1,26 @@
+.folderTasksContainer {
+  width: 80%;
+  min-width: 20rem;
+}
+
 .titleContainer {
   display: flex;
   align-items: center;
   gap: 1rem;
 }
 
-.separator {
-  margin: 1.5rem 0 2rem;
-}
-
-.folderTasksContainer {
-  width: 60%;
-  min-width: 22.5rem;
-}
-
-.folderTasksContainer__title {
+.title {
   font-size: 2.25rem;
   font-weight: 700;
+  max-width: 60rem;
+}
+
+.editTitle {
+  min-width: 4rem;
+}
+
+.separator {
+  margin: 1.5rem 0 2rem;
 }
 
 .folderTasks {
@@ -23,28 +28,4 @@
   flex-direction: column;
   gap: 1.5rem;
   margin-bottom: 1.5rem;
-}
-
-.btn {
-  border-radius: 50%;
-  width: 2rem;
-  height: 2rem;
-  transition: all 0.2s linear;
-}
-
-.btn__icon {
-  min-width: 1rem;
-  min-height: 1rem;
-}
-
-.editBtn {
-  background-color: var(--theme-secondary-color);
-}
-
-.editBtn:hover {
-  background-color: var(--theme-primary-color);
-}
-
-.stopEditBtn {
-  background-color: var(--orange-color);
 }

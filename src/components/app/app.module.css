@@ -2,17 +2,19 @@
   display: flex;
   min-height: 100vh;
   height: 100%;
+  overflow: hidden;
 }
 
 .sidebar {
+  flex: 0 0 20%;
   min-width: 15rem;
   background-color: var(--theme-primary-color);
-  flex: 0 0 20%;
 }
 
 .content {
+  flex: 1 1;
   padding: 3rem 4rem;
   background-color: var(--theme-secondary-color);
-  flex: 1 1;
+  overflow: hidden;
 }
 

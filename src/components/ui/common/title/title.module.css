@@ -1,0 +1,5 @@
+.title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+}

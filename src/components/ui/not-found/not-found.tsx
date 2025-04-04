@@ -15,9 +15,10 @@ export const NotFoundUI: FC<NotFoundUIProps> = ({ title }) => {
         <h2 className={s.notFound__title}>
           {title}
         </h2>
-        <Button onClick={() => navigate("/")}>
-          Вернуться на главную
-        </Button>
+        <Button 
+          children='Вернуться на главную'
+          onClick={() => navigate("/")}
+        />
       </section>
     </>
   );
