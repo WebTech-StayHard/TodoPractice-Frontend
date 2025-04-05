@@ -1,15 +1,27 @@
+.taskContainer,
 .task {
   display: flex;
   align-items: center;
-  gap: 1rem;
+}
 
+.taskContainer {
+  justify-content: space-between;
+}
+
+.task {
+  gap: 1rem;
   font-size: 1.35rem;
   font-weight: 500;
   max-width: 80%;
 }
 
 .text {
+  cursor: pointer;
   overflow: hidden;
   text-overflow: ellipsis;
   word-wrap: break-word;
+}
+
+.text:hover {
+  opacity: 0.8;
 }

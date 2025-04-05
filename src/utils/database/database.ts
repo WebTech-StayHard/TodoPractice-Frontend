@@ -57,6 +57,15 @@ class FakeDataBase {
     return newTask;
   };
 
+  deleteTask = (taskid: string) => {
+    const task = this._tasks.find((t) => t.id === taskid);
+
+    if (!task) return null;
+
+    this._tasks = this._tasks.filter((t) => t.id !== taskid);
+    return { id: task.id, folderid: task.folderid };
+  };
+
   updateTaskStatus = (id: string, status: boolean) => {
     this.updateEntityProperty(this._tasks, id, "status", status);
   };

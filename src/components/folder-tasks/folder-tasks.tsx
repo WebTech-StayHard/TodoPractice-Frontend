@@ -6,17 +6,30 @@ import { FolderTasksProps } from "./type";
 import { useSelector } from "@store";
 import { useDispatch } from "@store";
 import { TTask } from "@utils/types";
-import { updateTaskStatusAsync } from "@thunks/tasksThunks";
-import { getIsUpdatingTaskStatus } from "@slices/operationStatusSlice";
+import {
+  removeTaskAsync,
+  updateTaskStatusAsync,
+  updateTaskTextAsync,
+} from "@thunks/tasksThunks";
+import { getIsRemovingTask, getIsUpdatingTaskStatus } from "@slices/operationStatusSlice";
 import { updateFolderTitleAsync } from "@thunks/foldersThunks";
 
 export const FolderTasks: FC<FolderTasksProps> = ({ folder }) => {
   const dispatch = useDispatch();
   const isUpdatingTaskStatus = useSelector(getIsUpdatingTaskStatus);
+  const isRemovingTask = useSelector(getIsRemovingTask);
   const [editTitle, setEditTitle] = useState(false);
 
   const setTaskStatus = (task: TTask, status: boolean) => {
     dispatch(updateTaskStatusAsync({ task, data: status }));
+  };
+
+  const setTaskText = (task: TTask, text: string) => {
+    dispatch(updateTaskTextAsync({ task, data: text }));
+  };
+
+  const removeTask = (taskid: string) => {
+    dispatch(removeTaskAsync(taskid));
   };
 
   const setFolderTitle = (title: string) => {
@@ -30,7 +43,9 @@ export const FolderTasks: FC<FolderTasksProps> = ({ folder }) => {
     <Task
       key={t.id}
       task={t}
+      isRemovingTask={isRemovingTask}
       isUpdatingTaskStatus={isUpdatingTaskStatus}
+      handleRemove={removeTask}
       setTaskStatus={setTaskStatus}
     />
   ));

@@ -13,8 +13,14 @@ export type TFoldersState = {
 export type TOperationStatusState = {
   isAddingFolder: boolean;
   isRemovingFolder: string[];
+  isRemovingTask: string[];
 
   isUpdatingTaskStatus: string[];
   isUpdatingTaskText: string[];
   isUpdatingFolderTitle: string[];
 };
+
+export type PayloadRemoveTask = {
+  id: string;
+  folderid: string;
+}

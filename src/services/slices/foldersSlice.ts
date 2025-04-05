@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { TFolder, TTask } from "@utils/types";
 import { getFoldersAsync } from "@thunks/foldersThunks";
-import { TFoldersState } from './types/types';
+import { PayloadRemoveTask, TFoldersState } from './types/types';
 
 const initialState: TFoldersState = {
   folders: [],
@@ -25,6 +25,13 @@ const foldersSlice = createSlice({
     addTask: (state, { payload }: PayloadAction<TTask>) => {
       const folder = state.folders.find((f) => f.id === payload.folderid);
       folder?.tasks.push(payload);
+    },
+    removeTask: (state, { payload }: PayloadAction<PayloadRemoveTask>) => {
+      const folder = state.folders.find((f) => f.id === payload.folderid);
+
+      if (folder) {
+        folder.tasks = folder.tasks.filter((t) => t.id !== payload.id);
+      }
     },
     setTaskStatus: (state, { payload }: PayloadAction<TTask>) => {
       const task = findTask(state, payload.folderid, payload.id);
@@ -83,6 +90,7 @@ export const {
   addFolder,
   removeFolder,
   addTask,
+  removeTask,
   setTaskStatus,
   setTaskText,
   setFolderTitle

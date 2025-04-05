@@ -6,6 +6,7 @@ import { TOperationStatusState } from './types/types';
 const initialState: TOperationStatusState = {
   isAddingFolder: false,
   isRemovingFolder: [],
+  isRemovingTask: [],
 
   isUpdatingTaskStatus: [],
   isUpdatingTaskText: [],
@@ -18,6 +19,9 @@ const operationStatusSlice = createSlice({
   reducers: {
     setIsRemovingFolder: (state, { payload }: PayloadAction<string>) => {
       state.isRemovingFolder = toggleArrayItem(state.isRemovingFolder, payload);
+    },
+    setIsRemovingTask: (state, { payload }: PayloadAction<string>) => {
+      state.isRemovingTask = toggleArrayItem(state.isRemovingTask, payload);
     },
     setIsUpdatingTaskStatus: (state, { payload }: PayloadAction<string>) => {
       state.isUpdatingTaskStatus = toggleArrayItem(
@@ -41,6 +45,7 @@ const operationStatusSlice = createSlice({
   selectors: {
     getIsAddingFolder: (state) => state.isAddingFolder,
     getIsRemovingFolder: (state) => state.isRemovingFolder,
+    getIsRemovingTask: (state) => state.isRemovingTask,
 
     getIsUpdatingTaskStatus: (state) => state.isUpdatingTaskStatus,
     getIsUpdatingTaskText: (state) => state.isUpdatingTaskText,
@@ -63,6 +68,7 @@ const operationStatusSlice = createSlice({
 export const reducer = operationStatusSlice.reducer;
 export const {
   setIsRemovingFolder,
+  setIsRemovingTask,
   setIsUpdatingTaskStatus,
   setIsUpdatingTaskText,
   setIsUpdatingFolderTitle,
@@ -70,6 +76,7 @@ export const {
 export const {
   getIsAddingFolder,
   getIsRemovingFolder,
+  getIsRemovingTask,
   getIsUpdatingTaskStatus,
   getIsUpdatingTaskText,
   getIsUpdatingFolderTitle,

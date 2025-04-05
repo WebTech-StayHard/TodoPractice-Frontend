@@ -1,6 +1,6 @@
 import { database as db } from "../utils/database/database";
 import { TFolder, TTask } from "../utils/types";
-import { TServerResponse } from "./type";
+import { TRemoveTaskResponse, TServerResponse } from "./type";
 
 class FakeAPI {
   getFolders = async (): Promise<TFolder[]> =>
@@ -35,6 +35,14 @@ class FakeAPI {
         resolve(task);
       }, 500);
     });
+
+    removeTask = async (taskid: string): Promise<TRemoveTaskResponse> =>
+      await new Promise((resolve) => {
+        setTimeout(() => {
+          const res = db.deleteTask(taskid);
+          resolve(res);
+        }, 500);
+      });
 
   updateTaskStatus = async (
     id: string,
