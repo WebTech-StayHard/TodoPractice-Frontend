@@ -34,14 +34,14 @@ const foldersSlice = createSlice({
       }
     },
     setTaskStatus: (state, { payload }: PayloadAction<TTask>) => {
-      const task = findTask(state, payload.folderid, payload.id);
+      const task = findTask(state, payload.id, payload.folderid);
 
       if (task) {
         task.status = payload.status;
       }
     },
     setTaskText: (state, { payload }: PayloadAction<TTask>) => {
-      const task = findTask(state, payload.folderid, payload.id);
+      const task = findTask(state, payload.id, payload.folderid);
 
       if (task) {
         task.text = payload.text;

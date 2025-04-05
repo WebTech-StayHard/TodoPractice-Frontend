@@ -8,8 +8,7 @@ import { useDispatch } from "@store";
 import { TTask } from "@utils/types";
 import {
   removeTaskAsync,
-  updateTaskStatusAsync,
-  updateTaskTextAsync,
+  updateTaskStatusAsync
 } from "@thunks/tasksThunks";
 import { getIsRemovingTask, getIsUpdatingTaskStatus } from "@slices/operationStatusSlice";
 import { updateFolderTitleAsync } from "@thunks/foldersThunks";
@@ -22,10 +21,6 @@ export const FolderTasks: FC<FolderTasksProps> = ({ folder }) => {
 
   const setTaskStatus = (task: TTask, status: boolean) => {
     dispatch(updateTaskStatusAsync({ task, data: status }));
-  };
-
-  const setTaskText = (task: TTask, text: string) => {
-    dispatch(updateTaskTextAsync({ task, data: text }));
   };
 
   const removeTask = (taskid: string) => {

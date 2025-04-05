@@ -20,8 +20,13 @@
   overflow: hidden;
   text-overflow: ellipsis;
   word-wrap: break-word;
+  transition: opacity 0.1s linear;
 }
 
 .text:hover {
   opacity: 0.8;
+}
+
+.text:active {
+  opacity: 0.7;
 }

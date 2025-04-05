@@ -1,4 +1,4 @@
-import { ChangeEvent, FC } from "react";
+import { ChangeEvent, FC, useState } from "react";
 
 import { TaskProps } from "./type";
 import { TaskUI } from "@ui/task";
@@ -11,13 +11,12 @@ export const Task: FC<TaskProps> = ({
   handleRemove,
   setTaskStatus,
 }) => {
+  const [editMode, setEditMode] = useState(false);
   const { id } = task;
 
   const setStatus = (evt: ChangeEvent<HTMLInputElement>) => {
     setTaskStatus(task, evt.target.checked);
   };
-
-  const setTaskText = () => {};
 
   const removeTask = () => {
     handleRemove(id);
@@ -26,6 +25,9 @@ export const Task: FC<TaskProps> = ({
   return (
     <TaskUI
       task={task}
+      editMode={editMode}
+      activeEditMode={() => setEditMode(true)}
+      disableEditMode={() => setEditMode(false)}
       isRemovingTask={checkInProgress(isRemovingTask, id)}
       isUpdatingTaskStatus={checkInProgress(isUpdatingTaskStatus, id)}
       removeTask={removeTask}
