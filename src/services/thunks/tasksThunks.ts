@@ -25,7 +25,7 @@ export const updateTaskStatusAsync = createAsyncThunk<void, TUpdateTaskPayload<b
 
     const res = await fakeAPI.updateTaskStatus(task.id, data);
     if (res.resultCode === 0) {
-      dispatch(setTaskStatus({...task, status: data}))
+      dispatch(setTaskStatus({...task, status: data}));
     }
 
     dispatch(setIsUpdatingTaskStatus(task.id));

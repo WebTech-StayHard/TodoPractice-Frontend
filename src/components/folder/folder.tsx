@@ -2,14 +2,25 @@ import { FC } from 'react';
 import { FolderProps } from './type';
 import { FolderUI } from '@ui/folder';
 import { checkInProgress } from '@utils/helpers/arrayHelper';
+import { useDispatch } from '@store';
+import { useNavigate } from 'react-router-dom';
+import { removeFolderAsync } from '@thunks/foldersThunks';
 
-export const Folder: FC<FolderProps> = ({folder, isActive, isRemoving, handleRemove}) => {
+export const Folder: FC<FolderProps> = ({folder, isActive, isRemoving}) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const {id, title, color} = folder;
 
-  const removeFolder = (evt: React.MouseEvent<HTMLButtonElement>) => {
+  const removeFolder = async (evt: React.MouseEvent<HTMLButtonElement>) => {
     evt.stopPropagation();
     evt.preventDefault();
-    handleRemove(id);
+
+    try {
+      await dispatch(removeFolderAsync(id));
+      navigate('/');
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (

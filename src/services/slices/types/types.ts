@@ -20,7 +20,7 @@ export type TOperationStatusState = {
   isUpdatingFolderTitle: string[];
 };
 
-export type PayloadRemoveTask = {
+export type TSuccessRemovedTask = {
   id: string;
   folderid: string;
 }

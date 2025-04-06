@@ -1,33 +1,20 @@
-import { FC } from "react";
-import { useDispatch, useSelector } from "@store";
+import { Folder } from '@components/folder/folder';
 import {
   getCurrentFolderIdSelector,
   getFoldersSelector,
   getIsLoadingSelector
 } from "@slices/foldersSlice";
-import { NavLink, useNavigate } from "react-router-dom";
-import { Folder } from '@components/folder/folder';
-import { FolderListUI } from '@ui/folder-list/folder-list';
-import { removeFolderAsync } from '@thunks/foldersThunks';
 import { getIsRemovingFolder } from '@slices/operationStatusSlice';
+import { useSelector } from "@store";
+import { FolderListUI } from '@ui/folder-list/folder-list';
+import { FC } from "react";
+import { NavLink } from "react-router-dom";
 
 export const FolderList: FC = () => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  
   const folders = useSelector(getFoldersSelector);
   const currentFolderId = useSelector(getCurrentFolderIdSelector);
   const isRemoving = useSelector(getIsRemovingFolder);
   const isLoading = useSelector(getIsLoadingSelector);
-
-  const handleRemove = async (id: string) => {
-    try {
-      await dispatch(removeFolderAsync(id));
-      navigate('/');
-    } catch (err) {
-      console.error(err);
-    }
-  };
 
   const folderElements = folders.map((f) => (
     <NavLink 
@@ -39,7 +26,6 @@ export const FolderList: FC = () => {
         folder={f}
         isActive={f.id === currentFolderId}
         isRemoving={isRemoving}
-        handleRemove={handleRemove}
       />
     </NavLink>
   ));

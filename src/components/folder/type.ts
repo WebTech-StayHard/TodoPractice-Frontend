@@ -4,5 +4,4 @@ export type FolderProps = {
   folder: TFolder;
   isActive: boolean;
   isRemoving: string[];
-  handleRemove: (id: string) => void;
 };

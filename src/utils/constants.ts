@@ -70,4 +70,10 @@ export const initialTasks = [
     text: "Биткоины",
     status: false,
   },
+  {
+    id: "8",
+    folderid: "3",
+    text: "Посмотреть сериалы на кинопоиске",
+    status: false,
+  },
 ];

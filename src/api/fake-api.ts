@@ -1,5 +1,5 @@
-import { database as db } from "../utils/database/database";
-import { TFolder, TTask } from "../utils/types";
+import { database as db } from "@utils/database/database";
+import { TFolder, TTask } from "@utils/types";
 import { TRemoveTaskResponse, TServerResponse } from "./type";
 
 class FakeAPI {

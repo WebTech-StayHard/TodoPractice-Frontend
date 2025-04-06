@@ -3,24 +3,26 @@ import { ChangeEvent, FC, useState } from "react";
 import { TaskProps } from "./type";
 import { TaskUI } from "@ui/task";
 import { checkInProgress } from "@utils/helpers/arrayHelper";
+import { removeTaskAsync, updateTaskStatusAsync } from "@thunks/tasksThunks";
+import { useDispatch } from '@store';
 
 export const Task: FC<TaskProps> = ({
   task,
   isRemovingTask,
   isUpdatingTaskStatus,
-  handleRemove,
-  setTaskStatus,
 }) => {
-  const [editMode, setEditMode] = useState(false);
+  const dispatch = useDispatch();
   const { id } = task;
+  const [editMode, setEditMode] = useState(false);
 
-  const setStatus = (evt: ChangeEvent<HTMLInputElement>) => {
-    setTaskStatus(task, evt.target.checked);
+  const setTaskStatus = (evt: ChangeEvent<HTMLInputElement>) => {
+    const status = evt.target.checked;
+    dispatch(updateTaskStatusAsync({ task, data: status }));
   };
 
   const removeTask = () => {
-    handleRemove(id);
-  }
+    dispatch(removeTaskAsync(id));
+  };
 
   return (
     <TaskUI
@@ -31,7 +33,7 @@ export const Task: FC<TaskProps> = ({
       isRemovingTask={checkInProgress(isRemovingTask, id)}
       isUpdatingTaskStatus={checkInProgress(isUpdatingTaskStatus, id)}
       removeTask={removeTask}
-      setTaskStatus={setStatus}
+      setTaskStatus={setTaskStatus}
     />
   );
 };
