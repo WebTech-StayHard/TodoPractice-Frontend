@@ -29,6 +29,8 @@
   --toast-bg-color: #FFF;
   --toast-btn-color: #ff5947;
   --toast-box-shadow: #ffddad;
+  --toast-success-color: #32bea6;
+  --toast-error-color: #e04f5f;
 
   --edit-btn-bg: #1e1e1e;
 }

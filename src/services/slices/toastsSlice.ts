@@ -6,19 +6,19 @@ const initialState: TToastsState = {
   toasts: [{
     id: '1',
     type: 'success',
-    message: 'Test',
+    message: 'Заголовок папки был успешно обновлён!',
     duration: 30000
   },
   {
     id: '2',
     type: 'error',
-    message: 'Test 2',
+    message: 'Произошла ошибка при обновлении заголовка папки!',
     duration: 30000
   },
   {
     id: '3',
     type: 'default',
-    message: 'Test 3',
+    message: 'Какое-то бессмысленное тестовое сообщение',
     duration: 30000
   }]
 };
