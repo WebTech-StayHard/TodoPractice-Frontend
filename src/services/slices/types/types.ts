@@ -27,4 +27,5 @@ export type TSuccessRemovedTask = {
 
 export type TToastsState = {
   toasts: TToast[];
+  maxCount: number;
 }

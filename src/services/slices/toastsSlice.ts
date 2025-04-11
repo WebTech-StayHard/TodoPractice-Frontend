@@ -7,20 +7,21 @@ const initialState: TToastsState = {
     id: '1',
     type: 'success',
     message: 'Заголовок папки был успешно обновлён!',
-    duration: 30000
+    duration: 2000
   },
   {
     id: '2',
     type: 'error',
     message: 'Произошла ошибка при обновлении заголовка папки!',
-    duration: 30000
+    duration: 3000
   },
   {
     id: '3',
     type: 'default',
     message: 'Какое-то бессмысленное тестовое сообщение',
-    duration: 30000
-  }]
+    duration: 3000
+  }],
+  maxCount: 5
 };
 
 const toastsSlice = createSlice({
