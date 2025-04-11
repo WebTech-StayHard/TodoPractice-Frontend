@@ -8,6 +8,7 @@ export const EditTaskTextFormUI: FC<EditTaskTextFormUIProps> = ({
   isUpdate,
   isError,
   onTaskTextChange,
+  stopEditText,
   handleSubmit,
 }) => (
   <form className={s.form} name="edit-task-text" onSubmit={handleSubmit}>
@@ -21,5 +22,6 @@ export const EditTaskTextFormUI: FC<EditTaskTextFormUIProps> = ({
       required
     />
     <Button type="done" disabled={isUpdate || isError} />
+    <Button type='cross' onClick={stopEditText} />
   </form>
 );

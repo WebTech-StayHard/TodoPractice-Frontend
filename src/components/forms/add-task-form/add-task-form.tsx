@@ -2,7 +2,8 @@ import { ChangeEvent, FC, FormEvent, useState } from "react";
 import { AddTaskFormUI } from "@ui/forms/add-task-form";
 import { useDispatch } from "@store";
 import { addTaskAsync } from "@thunks/tasksThunks";
-import { AddTaskFormProps } from './type';
+import { AddTaskFormProps } from "./type";
+import { addToast } from '@slices/toastsSlice';
 
 export const AddTaskForm: FC<AddTaskFormProps> = ({ folderid }) => {
   const dispatch = useDispatch();
@@ -24,7 +25,13 @@ export const AddTaskForm: FC<AddTaskFormProps> = ({ folderid }) => {
       setTaskText("");
       setIsFormShow(false);
     } catch (err) {
-      console.log(err);
+      dispatch(
+        addToast({
+          message: "При добавлении задачи произошла ошибка!",
+          type: "error",
+          duration: 3000,
+        })
+      );
     }
   };
 

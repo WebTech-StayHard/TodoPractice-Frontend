@@ -5,6 +5,7 @@ import { EditFolderTitleFormProps } from "./type";
 import { updateFolderTitleAsync } from '@thunks/foldersThunks';
 import { getIsUpdatingFolderTitle } from '@slices/operationStatusSlice';
 import { checkInProgress } from '@utils/helpers/arrayHelper';
+import { addToast } from '@slices/toastsSlice';
 
 export const EditFolderTitleForm: FC<EditFolderTitleFormProps> = ({
   folder,
@@ -29,7 +30,11 @@ export const EditFolderTitleForm: FC<EditFolderTitleFormProps> = ({
       );
       onUpdateComplete();
     } catch (err) {
-      console.log(err);
+      dispatch(addToast({
+        message: 'При обновлении заголовка папки произошла ошибка!',
+        type: 'error',
+        duration: 3000,
+      }));
     }
   };
 

@@ -4,7 +4,7 @@
   align-items: end;
   gap: 0.5rem;
 
-  position: absolute;
+  position: fixed;
   right: 0;
   width: 20%;
   margin: 1rem 1rem 0 0;

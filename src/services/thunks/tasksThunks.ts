@@ -71,6 +71,12 @@ export const removeTaskAsync = createAsyncThunk(
         type: 'success',
         duration: 2000
       }));
+    } else {
+      dispatch(addToast({
+        message: 'Возникла ошибка при удалении задачи!',
+        type: 'error',
+        duration: 2000
+      }))
     }
   }
 );

@@ -1,15 +1,16 @@
-import { FC } from 'react';
-import { FolderProps } from './type';
-import { FolderUI } from '@ui/folder';
-import { checkInProgress } from '@utils/helpers/arrayHelper';
-import { useDispatch } from '@store';
-import { useNavigate } from 'react-router-dom';
-import { removeFolderAsync } from '@thunks/foldersThunks';
+import { FC } from "react";
+import { FolderProps } from "./type";
+import { FolderUI } from "@ui/folder";
+import { checkInProgress } from "@utils/helpers/arrayHelper";
+import { useDispatch } from "@store";
+import { useNavigate } from "react-router-dom";
+import { removeFolderAsync } from "@thunks/foldersThunks";
+import { addToast } from "@slices/toastsSlice";
 
-export const Folder: FC<FolderProps> = ({folder, isActive, isRemoving}) => {
+export const Folder: FC<FolderProps> = ({ folder, isActive, isRemoving }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const {id, title, color} = folder;
+  const { id, title, color } = folder;
 
   const removeFolder = async (evt: React.MouseEvent<HTMLButtonElement>) => {
     evt.stopPropagation();
@@ -17,14 +18,20 @@ export const Folder: FC<FolderProps> = ({folder, isActive, isRemoving}) => {
 
     try {
       await dispatch(removeFolderAsync(id));
-      navigate('/');
+      navigate("/");
     } catch (err) {
-      console.error(err);
+      dispatch(
+        addToast({
+          message: "При удалении папки произошла ошибка!",
+          type: "error",
+          duration: 3000,
+        })
+      );
     }
   };
 
   return (
-    <FolderUI 
+    <FolderUI
       title={title}
       color={color}
       isActive={isActive}

@@ -33,7 +33,6 @@ const App: FC = () => {
       <div className={s.sidebar}>
         <Sidebar />
       </div>
-
       <div className={s.content}>
         <Routes>
           <Route path="/" element={<HomePage />} />

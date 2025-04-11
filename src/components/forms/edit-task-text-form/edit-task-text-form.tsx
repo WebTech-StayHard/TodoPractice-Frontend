@@ -5,6 +5,7 @@ import { checkInProgress } from '@utils/helpers/arrayHelper';
 import { ChangeEvent, FC, FormEvent, useState } from "react";
 import { EditTaskTextFormProps } from "./type";
 import { EditTaskTextFormUI } from '@ui/forms/edit-task-text-form';
+import { addToast } from '@slices/toastsSlice';
 
 export const EditTaskTextForm: FC<EditTaskTextFormProps> = ({
   task,
@@ -29,7 +30,11 @@ export const EditTaskTextForm: FC<EditTaskTextFormProps> = ({
       );
       onUpdateComplete();
     } catch (err) {
-      console.log(err);
+      dispatch(addToast({
+        message: 'При обновлении текста задачи произошла ошибка!',
+        type: 'error',
+        duration: 3000,
+      }));
     }
   };
 
@@ -43,6 +48,7 @@ export const EditTaskTextForm: FC<EditTaskTextFormProps> = ({
       isUpdate={checkInProgress(isUpdating, task.id)}
       isError={isError}
       onTaskTextChange={onTaskTextChange}
+      stopEditText={onUpdateComplete}
       handleSubmit={handleSubmit}
     />
   );
