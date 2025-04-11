@@ -11,6 +11,7 @@ import {
   setIsUpdatingFolderTitle,
 } from "@slices/operationStatusSlice";
 import { AddFolderPayload, TUpdateFolderPayload } from './types/types';
+import { addToast } from '@slices/toastsSlice';
 
 const GET_FOLDERS = 'folders/getFolders';
 const REMOVE_FOLDER = 'folders/removeFolder';
@@ -30,6 +31,11 @@ export const removeFolderAsync = createAsyncThunk(
     const deletedFolderId = await fakeAPI.removeFolder(id);
     dispatch(removeFolder(deletedFolderId));
     dispatch(setIsRemovingFolder(id));
+    dispatch(addToast({
+      message: 'Папка удалена!',
+      type: 'success',
+      duration: 2000
+    }));
   }
 );
 
@@ -38,6 +44,11 @@ export const addFolderAsync = createAsyncThunk<string, AddFolderPayload>(
   async ({ folderName, folderColor }, { dispatch }) => {
     const folder = await fakeAPI.addFolder(folderName, folderColor);
     dispatch(addFolder(folder));
+    dispatch(addToast({
+      message: 'Папка добавлена!',
+      type: 'success',
+      duration: 2000
+    }));
     return folder.id;
   }
 );
@@ -51,6 +62,11 @@ export const updateFolderTitleAsync = createAsyncThunk<
   const res = await fakeAPI.updateFolderTitle(folder.id, data);
   if (res.resultCode === 0) {
     dispatch(setFolderTitle({...folder, title: data}));
+    dispatch(addToast({
+      message: 'Заголовок папки обновлён!',
+      type: 'success',
+      duration: 2000
+    }));
   }
 
   dispatch(setIsUpdatingFolderTitle(folder.id));

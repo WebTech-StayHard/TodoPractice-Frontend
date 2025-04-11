@@ -1,39 +1,33 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { TToastsState } from './types/types';
-import { TToast } from '@utils/types';
+import { createSlice, nanoid, PayloadAction } from "@reduxjs/toolkit";
+import { TToastsState } from "./types/types";
+import { TNewToastData, TToast } from "@utils/types";
 
 const initialState: TToastsState = {
-  toasts: [{
-    id: '1',
-    type: 'success',
-    message: 'Заголовок папки был успешно обновлён!',
-    duration: 2000
-  },
-  {
-    id: '2',
-    type: 'error',
-    message: 'Произошла ошибка при обновлении заголовка папки!',
-    duration: 3000
-  },
-  {
-    id: '3',
-    type: 'default',
-    message: 'Какое-то бессмысленное тестовое сообщение',
-    duration: 3000
-  }],
-  maxCount: 5
+  toasts: [],
+  maxCount: 5,
 };
 
 const toastsSlice = createSlice({
   name: "toasts",
   initialState,
   reducers: {
-    addToast: (state, { payload }: PayloadAction<TToast>) => {
-      state.toasts = [...state.toasts, payload];
+    addToast: {
+      reducer: (state, { payload }: PayloadAction<TToast>) => {
+        state.toasts = [...state.toasts, payload];
+        if (state.toasts.length > state.maxCount) {
+          state.toasts = state.toasts.slice(1);
+        }
+      },
+      prepare: (newToast: TNewToastData) => ({
+        payload: {
+          id: nanoid(),
+          ...newToast
+        },
+      }),
     },
     removeToast: (state, { payload }: PayloadAction<string>) => {
       state.toasts = state.toasts.filter((t) => t.id !== payload);
-    }
+    },
   },
   selectors: {
     getToastsSelector: (state) => state.toasts,

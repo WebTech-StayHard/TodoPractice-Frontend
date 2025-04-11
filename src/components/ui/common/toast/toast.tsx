@@ -24,9 +24,7 @@ export const ToastUI: FC<ToastUIProps> = ({ type, text, closeToast }) => {
       <div className={s.toastContent}>
         <span className={clsx(s.text, s[`text_${type}`])}>{text}</span>
         <Button
-          type="cross"
-          size="small"
-          extraClass={s.closeToast}
+          className={s.closeBtn}
           onClick={closeToast}
         />
       </div>

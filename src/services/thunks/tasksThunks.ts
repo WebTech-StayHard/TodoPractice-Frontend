@@ -4,6 +4,7 @@ import { fakeAPI } from '@api';
 import { addTask, removeTask, setTaskStatus, setTaskText } from '@slices/foldersSlice';
 import { setIsRemovingTask, setIsUpdatingTaskStatus, setIsUpdatingTaskText } from '@slices/operationStatusSlice';
 import { TUpdateTaskPayload } from './types/types';
+import { addToast } from '@slices/toastsSlice';
 
 const ADD_TASK = 'tasks/addTask';
 const UPDATE_TASK_STATUS = 'tasks/updateTaskStatus';
@@ -15,6 +16,11 @@ export const addTaskAsync = createAsyncThunk<void, Pick<TTask, 'folderid' | 'tex
   async ({folderid, text}, { dispatch }) => {
     const task = await fakeAPI.addTask(folderid, text);
     dispatch(addTask(task));
+    dispatch(addToast({
+      message: 'Новая задача добавлена!',
+      type: 'success',
+      duration: 2000
+    }));
   }
 );
 
@@ -40,6 +46,11 @@ export const updateTaskTextAsync = createAsyncThunk<void, TUpdateTaskPayload<str
     const res = await fakeAPI.updateTaskText(task.id, data);
     if (res.resultCode === 0) {
       dispatch(setTaskText({...task, text: data}));
+      dispatch(addToast({
+        message: 'Текст задачи обновлён!',
+        type: 'success',
+        duration: 2000
+      }));
     }
 
     dispatch(setIsUpdatingTaskText(task.id));
@@ -55,6 +66,11 @@ export const removeTaskAsync = createAsyncThunk(
     if (res !== null) {
       dispatch(removeTask({...res}));
       dispatch(setIsRemovingTask(taskid));
+      dispatch(addToast({
+        message: 'Задача удалена!',
+        type: 'success',
+        duration: 2000
+      }));
     }
   }
 );
