@@ -12,3 +12,9 @@ export interface TFolder {
   tasks: TTask[];
 };
 
+export type TToast = {
+  id: string;
+  message: string;
+  type: 'default' | 'error' | 'success';
+  duration: number;
+}

@@ -14,6 +14,7 @@ import { AppPreloader } from '@components/app-preloader';
 
 import { HomePage } from '@pages/home-page';
 import { TaskPage } from '@pages/task-page';
+import { ToastList } from '@components/common/toast-list';
 
 const App: FC = () => {
   const dispatch = useDispatch();
@@ -43,6 +44,7 @@ const App: FC = () => {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
+      <ToastList />
     </div>
   );
 };

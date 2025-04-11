@@ -1,0 +1,88 @@
+.toast {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  color: var(--secondary-color);
+  background-color: var(--toast-bg-color);
+
+  width: 20rem;
+  padding: 1.5rem 1rem;
+  border-radius: 0.25rem;
+  box-shadow: 0 1px 2px var(--toast-box-shadow);
+
+  animation: appearance 0.5s ease-in-out;
+  z-index: 15;
+}
+
+.toastClose { 
+  position: absolute;
+  cursor: pointer;
+
+  width: 2rem;
+  height: 1.75rem;
+  top: 50%;
+  right: 0.75rem;
+  transform: translateY(-40%);
+
+  transition: 
+    transform 0.25s ease-in,
+    opacity 0.1s linear;
+  z-index: 20;
+}
+
+.toastClose:hover { 
+  transform: scale(1.1) translateY(-40%);
+}
+
+.toastClose:active {
+  opacity: 0.8;
+}
+
+.toastClose::after,
+.toastClose::before {
+  content: '';
+  position: absolute;
+
+  left: 50%;
+  width: 3px;
+  height: 24px;
+
+  background-color: var(--toast-btn-color);
+  border-radius: 0.5rem;
+  transition: background 0.15s ease-in,
+}
+
+.toastClose::after {
+  transform: rotate(45deg);
+}
+
+.toastClose::before {
+  transform: rotate(-45deg);
+}
+
+.toastContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.text {
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-left: 0.75rem;
+}
+
+.textSuccess {
+  color: var(--success-color);
+}
+
+@keyframes appearance {
+  0% {
+    transform: translateX(20rem);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}

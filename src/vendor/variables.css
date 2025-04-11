@@ -26,5 +26,9 @@
   --custom-checkbox-color: #4DD599;
   --custom-checkbox-hover-color: #E8E8E8;
 
+  --toast-bg-color: #FFF;
+  --toast-btn-color: #ff5947;
+  --toast-box-shadow: #ffddad;
+
   --edit-btn-bg: #1e1e1e;
 }
