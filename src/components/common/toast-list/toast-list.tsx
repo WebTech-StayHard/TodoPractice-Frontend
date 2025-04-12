@@ -6,6 +6,7 @@ import { ToastListUI } from "@components/ui/common/toast-list";
 
 export const ToastList: FC = () => {
   const toasts = useSelector(getToastsSelector);
+
   const toastElements = toasts.map((t) => (
     <Toast
       key={t.id}

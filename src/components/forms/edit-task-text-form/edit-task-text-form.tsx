@@ -9,7 +9,7 @@ import { addToast } from '@slices/toastsSlice';
 
 export const EditTaskTextForm: FC<EditTaskTextFormProps> = ({
   task,
-  onUpdateComplete,
+  stopEdit,
 }) => {
   const dispatch = useDispatch();
   const isUpdating = useSelector(getIsUpdatingTaskText);
@@ -28,7 +28,7 @@ export const EditTaskTextForm: FC<EditTaskTextFormProps> = ({
           data: taskText,
         })
       );
-      onUpdateComplete();
+      stopEdit();
     } catch (err) {
       dispatch(addToast({
         message: 'При обновлении текста задачи произошла ошибка!',
@@ -48,7 +48,7 @@ export const EditTaskTextForm: FC<EditTaskTextFormProps> = ({
       isUpdate={checkInProgress(isUpdating, task.id)}
       isError={isError}
       onTaskTextChange={onTaskTextChange}
-      stopEditText={onUpdateComplete}
+      stopEdit={stopEdit}
       handleSubmit={handleSubmit}
     />
   );

@@ -1,10 +1,11 @@
-import { Button } from "@components/common/buttons";
 import { FC } from "react";
-import s from "./toast.module.css";
+import { Button } from "@components/common/buttons";
 import { ToastUIProps } from "./type";
+import s from "./toast.module.css";
+import clsx from "clsx";
+
 import errorIcon from "@images/toast/toast-error-icon.svg";
 import successIcon from "@images/toast/toast-success-icon.svg";
-import clsx from "clsx";
 
 const mapIcon = {
   default: null,
@@ -14,6 +15,7 @@ const mapIcon = {
 
 export const ToastUI: FC<ToastUIProps> = ({ type, text, closeToast }) => {
   const icon = mapIcon[type];
+
   return (
     <article className={s.toast}>
       {icon && (
@@ -23,10 +25,7 @@ export const ToastUI: FC<ToastUIProps> = ({ type, text, closeToast }) => {
       )}
       <div className={s.toastContent}>
         <span className={clsx(s.text, s[`text_${type}`])}>{text}</span>
-        <Button
-          className={s.closeBtn}
-          onClick={closeToast}
-        />
+        <Button className={s.closeBtn} onClick={closeToast} />
       </div>
     </article>
   );

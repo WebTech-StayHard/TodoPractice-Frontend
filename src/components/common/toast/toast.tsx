@@ -4,7 +4,7 @@ import { FC, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { ToastProps } from "./type";
 
-import { ToastUI } from '@components/ui/common/toast';
+import { ToastUI } from "@components/ui/common/toast";
 
 export const Toast: FC<ToastProps> = ({ id, type, text, duration }) => {
   const dispatch = useDispatch();
@@ -20,5 +20,11 @@ export const Toast: FC<ToastProps> = ({ id, type, text, duration }) => {
     };
   }, []);
 
-  return <ToastUI type={type} text={text} closeToast={closeToast} />
+  return (
+    <ToastUI
+      type={type}
+      text={text}
+      closeToast={closeToast}
+    />
+  );
 };

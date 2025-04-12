@@ -30,7 +30,7 @@ export const TaskUI: FC<TaskUIProps> = ({
         </div>
       </div>
     ) : (
-      <EditTaskTextForm task={task} onUpdateComplete={disableEditMode} />
+      <EditTaskTextForm task={task} stopEdit={disableEditMode} />
     )}
     <div className={s.taskActions}>
       <Button

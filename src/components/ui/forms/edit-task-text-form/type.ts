@@ -5,6 +5,6 @@ export type EditTaskTextFormUIProps = {
   isUpdate: boolean;
   isError: boolean;
   onTaskTextChange: (evt: ChangeEvent<HTMLInputElement>) => void;
-  stopEditText: () => void;
+  stopEdit: () => void;
   handleSubmit: (evt: FormEvent) => void;
 }
