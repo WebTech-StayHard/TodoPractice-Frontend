@@ -55,7 +55,7 @@
 
   width: 1.75rem;
   height: 1.75rem;
-  background-color: var(--modal-btn-color);
+  background-color: var(--toast-btn-color);
   transition: all 0.2s ease-in-out;
   border-radius: 50%;
 }
@@ -80,7 +80,7 @@
   top: 13px;
   left: 6px;
 
-  background-color: var(--modal-bg-color);
+  background-color: var(--toast-bg-color);
 }
 
 .closeBtn::before {
