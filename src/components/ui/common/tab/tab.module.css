@@ -47,3 +47,9 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+@media (max-width: 960px) {
+  .text {
+    font-size: 1rem;
+  }
+}

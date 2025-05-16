@@ -3,14 +3,30 @@
   text-align: center;
 }
 
-.home__title {
+.title {
   margin-bottom: 0.5rem;
   font-size: 3rem;
   font-weight: 700;
   color: var(--orange-color);
 }
 
-.home__text {
+.text {
   font-size: 1.5rem;
   font-weight: 600;
+}
+
+@media (max-width: 960px) {
+  .home {
+    margin-top: 2rem;
+  }
+
+  .title {
+    font-size: 2rem;
+    font-weight: 600;
+  }
+
+  .text {
+    font-size: 1.25rem;
+    font-weight: 500;
+  }
 }

@@ -6,11 +6,11 @@ export const HomePageUI: FC = () => (
   <>
     <SEO title='Todo List' />
     <section className={s.home}>
-      <h2 className={s.home__title}>
+      <h2 className={s.title}>
         Добро пожаловать!
       </h2>
-      <p className={s.home__text}>
-        Для начала работы выберите папку
+      <p className={s.text}>
+        Для начала работы выберите папку в меню
       </p>
     </section>
   </>
