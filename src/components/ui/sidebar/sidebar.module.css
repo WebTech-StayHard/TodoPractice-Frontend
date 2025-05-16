@@ -3,6 +3,35 @@
   flex-direction: column;
   gap: 1.75rem;
 
-  margin-top: 2.5rem;
-  padding: 0 2rem;
+  padding: 2rem;
+  background-color: var(--theme-primary-color);
+}
+
+.burger {
+  position: fixed;
+  padding: 1rem;
+  z-index: 10;
+}
+
+@media (min-width: 960px) {
+  .burger {
+    display: none;
+  }
+}
+
+@media (max-width: 960px) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    padding: 4rem 2rem;
+    transition: transform 0.3s ease-in-out;
+    transform: translateX(-100%);
+    z-index: 5;
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
 }

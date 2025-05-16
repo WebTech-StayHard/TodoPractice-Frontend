@@ -5,13 +5,8 @@
   overflow: hidden;
 }
 
-.sidebar {
-  flex: 0 0 30%;
-  background-color: var(--theme-primary-color);
-}
-
 .content {
-  flex: 0 0 70%;
+  flex: 1 1;
   padding: 3rem 4rem;
   background-color: var(--theme-secondary-color);
   overflow: hidden;
@@ -19,17 +14,6 @@
 
 @media (max-width: 960px) {
   .content {
-    flex: 1 1;
-    padding: 2rem;
-  }
-
-  .sidebar {
-    display: none;
-  }
-}
-
-@media (max-width: 600px) {
-  .content {
-    padding: 1rem;
+    padding: 4rem 1rem;
   }
 }

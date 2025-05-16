@@ -1,20 +1,20 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { Routes, Route } from "react-router-dom";
 import { FC, useEffect } from "react";
+import { Route, Routes } from "react-router-dom";
 
+import { AllTasks } from "@components/all-tasks";
+import { AppPreloader } from "@components/app-preloader";
+import { FolderTasksContainer } from "@components/folder-tasks/folder-tasks-container";
+import { NotFound } from "@components/not-found";
+import { Sidebar } from "@components/sidebar";
+import { getIsInitializedSelector } from "@slices/appSlice";
+import { useDispatch, useSelector } from "@store";
+import { initialize } from "@thunks/appThunk";
 import s from "./app.module.css";
-import { Sidebar } from '@components/sidebar';
-import { AllTasks } from '@components/all-tasks';
-import { NotFound } from '@components/not-found';
-import { FolderTasksContainer } from '@components/folder-tasks/folder-tasks-container';
-import { useDispatch, useSelector } from '@store';
-import { getIsInitializedSelector } from '@slices/appSlice';
-import { initialize } from '@thunks/appThunk';
-import { AppPreloader } from '@components/app-preloader';
 
-import { HomePage } from '@pages/home-page';
-import { TaskPage } from '@pages/task-page';
-import { ToastList } from '@components/common/toast-list';
+import { ToastList } from "@components/common/toast-list";
+import { HomePage } from "@pages/home-page";
+import { TaskPage } from "@pages/task-page";
 
 const App: FC = () => {
   const dispatch = useDispatch();
@@ -22,17 +22,15 @@ const App: FC = () => {
 
   useEffect(() => {
     dispatch(initialize());
-  }, [])
+  }, []);
 
   if (!isInitialized) {
-    return <AppPreloader />
+    return <AppPreloader />;
   }
 
   return (
     <div className={s.wrapper}>
-      <div className={s.sidebar}>
-        <Sidebar />
-      </div>
+      <Sidebar />
       <div className={s.content}>
         <Routes>
           <Route path="/" element={<HomePage />} />

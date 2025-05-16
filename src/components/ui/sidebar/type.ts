@@ -1,7 +1,9 @@
 import { RefObject } from "react";
-import { ModalSettings } from '../../../hooks/useModal/type';
+import { ModalSettings } from '@hooks/useModal/type';
 
-export type SidebarProps = {
+export type SidebarUIProps = {
   addFolderTabRef: RefObject<HTMLDivElement | null>;
   modalSettings: ModalSettings;
+  isSidebarOpen: boolean;
+  toggleSidebar: () => void;
 };
