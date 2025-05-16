@@ -1,0 +1,55 @@
+.modal {
+  position: absolute;
+  padding: 1rem;
+  min-width: 15rem;
+  min-height: 4rem;
+  border-radius: 0.5rem;
+  background-color: var(--modal-bg-color);
+
+  box-shadow: 0 1px 4px var(--modal-box-shadow);
+  z-index: 10;
+}
+
+.closeBtn {
+  position: absolute;
+
+  top: -0.75rem;
+  right: -0.75rem;
+
+  width: 1.75rem;
+  height: 1.75rem;
+  background-color: var(--modal-btn-color);
+  transition: all 0.2s ease-in-out;
+  border-radius: 50%;
+}
+
+.closeBtn:hover {
+  transform: scale(1.1);
+}
+
+.closeBtn:active {
+  opacity: 0.7;
+}
+
+.closeBtn::before,
+.closeBtn::after {
+  content: '';
+
+  position: absolute;
+  width: 1rem;
+  height: 2px;
+  border-radius: 0.25rem;
+
+  top: 13px;
+  left: 6px;
+
+  background-color: var(--modal-bg-color);
+}
+
+.closeBtn::before {
+  transform: rotate(45deg);
+}
+
+.closeBtn::after {
+  transform: rotate(-45deg);
+}

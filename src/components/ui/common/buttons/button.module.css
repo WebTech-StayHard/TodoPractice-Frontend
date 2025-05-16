@@ -1,0 +1,125 @@
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.25s linear;
+  border-radius: 0.25rem;
+}
+
+.button:hover {
+  transform: scale(1.05);
+}
+
+.button:active {
+  opacity: 0.7
+}
+
+.button__small {
+  padding: 0.25rem 0.75rem;
+}
+
+.button__medium {
+  padding: 0.5rem 1rem;
+}
+
+.button__large {
+  padding: 0.75rem 1.25rem;
+}
+
+
+/* Btn with icon */
+.btnWithIcon {
+  display: flex;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  transition: all 0.2s linear;
+}
+
+.btnWithIcon__small {
+  padding: 0.5rem;
+}
+
+.btnWithIcon__medium {
+  padding: 0.75rem;
+}
+
+.btnWithIcon__large {
+  padding: 1rem;
+}
+
+.btnWithIcon:not(:disabled):hover {
+  transform: scale(1.1);
+}
+
+.btnWithIcon:not(:disabled):active {
+  opacity: 0.8;
+}
+
+.btnWithIcon:disabled {
+  background-color: var(--disabled-btn-color);
+}
+
+/* Icon */
+.icon__small {
+  width: 0.75rem;
+  height: 0.75rem;
+}
+
+.icon__medium {
+  width: 1rem;
+  height: 1rem;
+}
+
+.icon__large {
+  width: 1.75rem;
+  height: 1.75rem;
+}
+
+/* Edit */
+.edit {
+  background-color: var(--theme-secondary-color);
+}
+
+.edit:not(:disabled):hover {
+  background-color: var(--theme-primary-color);
+}
+
+/* Cross */
+.cross {
+  background-color: var(--orange-color);
+}
+
+.cross:not(:disabled):hover {
+  background-color: var(--lighten-orange-color);
+}
+
+/* Done */
+.done {
+  background-color: var(--success-color);
+}
+
+@media (max-width: 1280px) {
+  .button__medium {
+    padding: 0.35rem 0.85rem;
+  }
+
+  .button__large {
+    padding: 0.6rem 0.9rem;
+  }
+
+
+  .btnWithIcon__medium {
+    padding: 0.65rem;
+  }
+
+  .btnWithIcon__large {
+    padding: 0.85rem;
+  }
+
+  .icon__medium {
+    width: 0.85rem;
+    height: 0.85rem;
+  }
+}

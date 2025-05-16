@@ -1,0 +1,50 @@
+.burgerButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+
+  width: 2.5rem;
+  height: 2.5rem;
+  cursor: pointer;
+  background-color: var(--theme-primary-color);
+  border-radius: 50%;
+}
+
+.burgerButton.open {
+  background-color: var(--theme-secondary-color);
+}
+
+.burgerLine {
+  width: 20px;
+  height: 2px;
+  background-color: var(--primary-color);
+  border-radius: 0.5rem;
+
+  transition: all 0.3s ease;
+}
+
+.burgerLine_active:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.burgerLine_active:nth-child(2) {
+  opacity: 0;
+}
+
+.burgerLine_active:nth-child(3) {
+  transform: rotate(-45deg) translate(3px, -4px);
+}
+
+@media (max-width: 600px) {
+  .burgerButton {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+
+  .burgerLine {
+    width: 18px;
+    height: 2px;
+  }
+}

@@ -1,0 +1,31 @@
+.folderTasksContainer {
+  width: 80%;
+  min-width: 20rem;
+}
+
+.titleContainer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  max-width: 80%;
+}
+
+.editTitle {
+  min-width: 4rem;
+}
+
+.separator {
+  margin: 1.5rem 0 2rem;
+}
+
+.folderTasks {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}

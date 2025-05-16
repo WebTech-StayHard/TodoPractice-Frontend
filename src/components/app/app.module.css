@@ -1,0 +1,19 @@
+.wrapper {
+  display: flex;
+  min-height: 100vh;
+  height: 100%;
+  overflow: hidden;
+}
+
+.content {
+  flex: 1 1;
+  padding: 3rem 4rem;
+  background-color: var(--theme-secondary-color);
+  overflow: hidden;
+}
+
+@media (max-width: 960px) {
+  .content {
+    padding: 4rem 1rem;
+  }
+}

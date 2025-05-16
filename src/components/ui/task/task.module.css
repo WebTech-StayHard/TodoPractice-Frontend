@@ -1,0 +1,50 @@
+.taskContainer,
+.task {
+  display: flex;
+  align-items: center;
+}
+
+.taskContainer {
+  justify-content: space-between;
+}
+
+.task {
+  gap: 1rem;
+  font-size: 1.35rem;
+  font-weight: 500;
+  max-width: 80%;
+}
+
+.text {
+  cursor: pointer;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  transition: opacity 0.1s linear;
+}
+
+.text:hover {
+  opacity: 0.8;
+}
+
+.text:active {
+  opacity: 0.7;
+}
+
+@media (max-width: 1280px) {
+  .task {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 960px) {
+  .task {
+    font-size: 1.15rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .task {
+    font-size: 1rem;
+  }
+}

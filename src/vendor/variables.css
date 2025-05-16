@@ -1,0 +1,36 @@
+:root {
+  --primary-color: #fff;
+  --secondary-color: #000;
+  --lighten-orange-color: #ffa454;
+  --orange-color: #ff5b42;
+  --theme-primary-color: #141414;
+  --theme-secondary-color: #222222;
+
+  --gray-color: #C9D1D3;
+  --success-color: #4abe78;
+
+  --cancel-btn-color: #F4F6F8;
+  --cancel-btn-text-color: #9C9C9C;
+  --disabled-btn-color: #858484;
+
+  --separator-color: #F2F2F2;
+
+  --modal-bg-color: #FFF;
+  --modal-btn-color: #333333;
+  --modal-box-shadow: #EFEFEF;
+
+  --addFolder-input-bg-color: #fff;
+  --addFolder-input-border-color: #d6d6d6;
+  --addFolder-placeholder-color: #C7C7C7;
+
+  --custom-checkbox-color: #4DD599;
+  --custom-checkbox-hover-color: #E8E8E8;
+
+  --toast-bg-color: #FFF;
+  --toast-btn-color: #333333;
+  --toast-box-shadow: #ffddad;
+  --toast-success-color: #32bea6;
+  --toast-error-color: #e04f5f;
+
+  --edit-btn-bg: #1e1e1e;
+}

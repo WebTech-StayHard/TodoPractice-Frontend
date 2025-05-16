@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@images/*": ["src/assets/images/*"],
+      "@components/*": ["src/components/*"],
+      "@ui/*": ["src/components/ui/*"],
+      "@pages/*": ["src/pages/*"],
+      "@ui-pages/*": ["src/components/ui/pages/*"],
+      "@slices/*": ["src/services/slices/*"],
+      "@selectors/*": ["src/services/selectors/*"],
+      "@thunks/*": ["src/services/thunks/*"],
+      "@utils/*": ["src/utils/*"],
+      "@hooks/*": ["src/hooks/*"],
+      "@store": ["src/services/store/store.ts"],
+      "@api": ["src/api/fake-api.ts"],
+    }
+  },
+  "exclude": ["node_modules", "build"]
+}
