@@ -18,27 +18,29 @@ export const TaskUI: FC<TaskUIProps> = ({
 }) => (
   <article className={s.taskContainer}>
     {!editMode ? (
-      <div className={s.task}>
-        <CheckBox
-          id={task.id}
-          checked={task.status}
-          disabled={isUpdatingTaskStatus}
-          onChange={setTaskStatus}
-        />
-        <div onClick={activeEditMode}>
-          <span className={s.text}>{task.text}</span>
+      <>
+        <div className={s.task}>
+          <CheckBox
+            id={task.id}
+            checked={task.status}
+            disabled={isUpdatingTaskStatus}
+            onChange={setTaskStatus}
+          />
+          <div onClick={activeEditMode}>
+            <span className={s.text}>{task.text}</span>
+          </div>
         </div>
-      </div>
+        <div className={s.taskActions}>
+          <Button
+            variant="cross"
+            size="small"
+            disabled={isRemovingTask}
+            onClick={removeTask}
+          />
+        </div>
+      </>
     ) : (
       <EditTaskTextForm task={task} stopEdit={disableEditMode} />
     )}
-    <div className={s.taskActions}>
-      <Button
-        variant="cross"
-        size="small"
-        disabled={isRemovingTask}
-        onClick={removeTask}
-      />
-    </div>
   </article>
 );

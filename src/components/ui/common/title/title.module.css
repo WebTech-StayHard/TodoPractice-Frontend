@@ -1,5 +1,12 @@
 .title {
+  font-size: 2rem;
   overflow: hidden;
   text-overflow: ellipsis;
   word-wrap: break-word;
+}
+
+@media (max-width: 960px) {
+  .title {
+    font-size: 1.85rem;
+  }
 }

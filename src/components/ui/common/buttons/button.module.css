@@ -30,6 +30,7 @@
 /* Btn with icon */
 .btnWithIcon {
   display: flex;
+  flex-shrink: 0;
   justify-content: center;
   align-items: center;
   border-radius: 50%;
@@ -62,8 +63,8 @@
 
 /* Icon */
 .icon__small {
-  min-width: 0.75rem;
-  min-height: 0.75rem;
+  width: 0.75rem;
+  height: 0.75rem;
 }
 
 .icon__medium {
@@ -72,8 +73,8 @@
 }
 
 .icon__large {
-  min-width: 1.75rem;
-  min-height: 1.75rem;
+  width: 1.75rem;
+  height: 1.75rem;
 }
 
 /* Edit */
@@ -97,4 +98,28 @@
 /* Done */
 .done {
   background-color: var(--success-color);
+}
+
+@media (max-width: 1280px) {
+  .button__medium {
+    padding: 0.35rem 0.85rem;
+  }
+
+  .button__large {
+    padding: 0.6rem 0.9rem;
+  }
+
+
+  .btnWithIcon__medium {
+    padding: 0.65rem;
+  }
+
+  .btnWithIcon__large {
+    padding: 0.85rem;
+  }
+
+  .icon__medium {
+    width: 0.85rem;
+    height: 0.85rem;
+  }
 }

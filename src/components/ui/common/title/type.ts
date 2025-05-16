@@ -1,7 +1,3 @@
-import { ReactNode } from 'react';
+import { TitleProps } from "@components/common/title/type";
 
-export type TitleUIProps = {
-  className?: string;
-  color?: string;
-  children: ReactNode;
-};
+export type TitleUIProps = TitleProps;

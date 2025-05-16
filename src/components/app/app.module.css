@@ -6,15 +6,30 @@
 }
 
 .sidebar {
-  flex: 0 0 20%;
-  min-width: 15rem;
+  flex: 0 0 30%;
   background-color: var(--theme-primary-color);
 }
 
 .content {
-  flex: 1 1;
+  flex: 0 0 70%;
   padding: 3rem 4rem;
   background-color: var(--theme-secondary-color);
   overflow: hidden;
 }
 
+@media (max-width: 960px) {
+  .content {
+    flex: 1 1;
+    padding: 2rem;
+  }
+
+  .sidebar {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .content {
+    padding: 1rem;
+  }
+}
