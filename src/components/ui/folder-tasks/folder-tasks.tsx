@@ -28,7 +28,7 @@ export const FolderTasksUI: FC<FolderTasksUIProps> = ({
       )}
       <div className={s.editTitle}>
         <Button
-          type={editTitle ? "cross" : "edit"}
+          variant={editTitle ? "cross" : "edit"}
           onClick={editTitle ? disableEditTitleMode : activeEditTitleMode}
         />
       </div>

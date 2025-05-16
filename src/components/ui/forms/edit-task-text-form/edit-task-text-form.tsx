@@ -21,7 +21,7 @@ export const EditTaskTextFormUI: FC<EditTaskTextFormUIProps> = ({
       maxLength={128}
       required
     />
-    <Button type="done" disabled={isUpdate || isError} />
-    <Button type='cross' onClick={stopEdit} />
+    <Button variant="done" disabled={isUpdate || isError} />
+    <Button variant='cross' onClick={stopEdit} />
   </form>
 );

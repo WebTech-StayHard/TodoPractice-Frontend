@@ -34,11 +34,13 @@ export const AddTaskFormUI: FC<AddTaskFormUIProps> = ({
         required
       />
       <div className={s.taskBtnContainer}>
-        <Button 
+        <Button
+          type='submit'
           children='Добавить задачу'
           extraClass={clsx(s.taskBtn, s.taskSubmitBtn)}
         />
         <Button 
+          type='button'
           children='Отмена'
           extraClass={clsx(s.taskBtn, s.taskCancelBtn)} 
           onClick={hideForm}

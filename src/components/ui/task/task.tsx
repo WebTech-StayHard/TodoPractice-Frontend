@@ -34,7 +34,7 @@ export const TaskUI: FC<TaskUIProps> = ({
     )}
     <div className={s.taskActions}>
       <Button
-        type="cross"
+        variant="cross"
         size="small"
         disabled={isRemovingTask}
         onClick={removeTask}

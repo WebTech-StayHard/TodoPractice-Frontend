@@ -17,6 +17,6 @@ export const FolderUI: FC<FolderUIProps> = ({
     <Tab text={title}>
       <FolderMark color={color} />
     </Tab>
-    <Button type="cross" size="small" disabled={disabled} onClick={onClick} />
+    <Button variant="cross" size="small" disabled={disabled} onClick={onClick} />
   </TabContainer>
 );

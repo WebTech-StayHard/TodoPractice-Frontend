@@ -20,6 +20,6 @@ export const EditFolderTitleFormUI: FC<EditFolderTitleFormUIProps> = ({
       maxLength={64}
       required
     />
-    <Button type="done" disabled={isUpdate || isError} />
+    <Button variant="done" disabled={isUpdate || isError} />
   </form>
 );
